@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    color: #333; /* Color de texto oscuro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    background-color: #fff; /* Fondo blanco para el contenido */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrar contenido */
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.header img {
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+    width: 450px;
+    height: 250px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #00A6F1 ;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #F8901F;
+}
+
+button.return-menu {
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid #F63E2B; /* Borde rojo */
+    color: #F63E2B; /* Texto rojo */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 390px; /* Espacio entre los botones */
+}
+
+button.return-menu:hover {
+    background-color: #F63E2B; /* Fondo rojo al pasar el ratón */
+    color: white; /* Texto blanco al pasar el ratón */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+}

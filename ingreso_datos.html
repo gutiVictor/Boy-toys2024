@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style_IngresoDatos.css" />
+    <link rel="icon" href="LOGO-BOY-TOYS.png" type="image/png">
+    <title>Ingreso de datos</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <img src="LOGO-BOY-TOYS.png" alt="Boytoys" />
+      </div>
+      <h1>Hola soy Impresión</h1>
+
+      <form action="conecction.php" method="post">
+        <label for="referencia">Referencia:</label>
+        <input type="text" id="referencia" name="referencia" required /><br />
+
+        <label for="descripcion">Descripción del ítem:</label>
+        <input type="text" id="descripcion" name="descripcion" required /><br />
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required /><br />
+
+        <label for="numero_caja">Número de caja:</label>
+        <input
+          type="number"
+          id="numero_caja"
+          name="numero_caja"
+          required
+        /><br />
+
+        <div class="button-container">
+          <button type="submit">Enviar</button>
+          <button
+            type="button"
+            class="return-menu"
+            onclick="navigateTo('index.html')"
+          >
+            Volver al Menú
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function navigateTo(page) {
+        window.location.href = page;
+      }
+
+      // Escuchar eventos de teclado para capturar el código de barras
+      document.addEventListener("keypress", function (event) {
+        // Verificar si el foco está en el campo de referencia y si se presionó Enter
+        if (event.target.id === "referencia" && event.key === "Enter") {
+          // Evitar que se envíe el formulario automáticamente
+          event.preventDefault();
+        } else {
+          // Si el foco no está en el campo de referencia, no hacemos nada
+          return;
+        }
+
+        // Obtener el valor del código de barras leído (simulado con '1234567890' aquí)
+        var codigoBarras = "1234567890"; // Aquí deberías obtener el valor real del lector
+
+        // Insertar el código de barras en el campo de referencia
+        document.getElementById("referencia").value = codigoBarras;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    color: #333; /* Color de texto oscuro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    background-color: #fff; /* Fondo blanco para el contenido */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrar contenido */
+    width: 100%;
+}
+
+h1 {
+    color: #4CAF50; /* Color verde para el título */
+}
+
+.header img {
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+    width: 450px;
+    height: 250px;
+}
+
+button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid red; /* Borde rojo */
+    color: red; /* Texto rojo */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: red; /* Fondo rojo al pasar el ratón */
+    color: white; /* Texto blanco al pasar el ratón */
+}
