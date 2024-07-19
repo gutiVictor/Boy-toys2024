@@ -23,7 +23,7 @@ $numero_caja = (int)$_POST['numero_caja'];
 $sql = "INSERT INTO tiendaempaques (referencias, des_Item, cantidad, `num-caja`, fecha_registro)
         VALUES ('$referencia', '$descripcion', $cantidad, $numero_caja, CURRENT_TIMESTAMP)";
 
-// Ejecutar la consulta
+// Ejecutar la consulta 
 if ($conn->query($sql) === TRUE) {
     echo "Datos ingresados correctamente Por Usuario BOY TOYS.";
 } else {
