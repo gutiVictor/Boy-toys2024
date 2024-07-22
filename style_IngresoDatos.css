@@ -10,6 +10,8 @@ body {
     height: 100vh;
 }
 
+/* rama principal atributos */
+
 .main {
     background-color: #fff; /* Fondo blanco para el contenido */
     padding: 20px;
@@ -46,7 +48,7 @@ form input {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
+/* style_IngresoDatos.css */
 form button {
     background-color: #00A6F1 ;
     color: white;
@@ -57,9 +59,12 @@ form button {
     margin-top: 10px;
 }
 
+/* transition al pasar el ratón */
 form button:hover {
     background-color: #F8901F;
 }
+
+/* regresar al menu */
 
 button.return-menu {
     background-color: transparent; /* Fondo transparente */
@@ -71,10 +76,14 @@ button.return-menu {
     margin-left: 390px; /* Espacio entre los botones */
 }
 
+/* transition al pasar el ratón */
+
 button.return-menu:hover {
     background-color: #F63E2B; /* Fondo rojo al pasar el ratón */
     color: white; /* Texto blanco al pasar el ratón */
 }
+
+/* justifica los botones y los centra */
 
 .button-container {
     display: flex;

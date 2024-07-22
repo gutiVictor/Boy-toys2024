@@ -1,5 +1,5 @@
 <?php
-// Conexión a la base de datos (valores por defecto)
+// Conectarse a la base de datos desde PHP
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -29,6 +29,8 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+// Cerrar la base de datos
 
 
 // Cerrar conexión
