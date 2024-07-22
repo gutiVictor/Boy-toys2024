@@ -25,14 +25,13 @@ $sql = "INSERT INTO tiendaempaques (referencias, des_Item, cantidad, `num-caja`,
 
 // Ejecutar la consulta 
 if ($conn->query($sql) === TRUE) {
-    echo "Datos ingresados correctamente Por Usuario BOY TOYS.";
+    // Redirigir a ingreso_datos.html
+    header("Location: ingreso_datos.html");
+    exit(); // Asegurarse de que el script termine aquí para prevenir cualquier salida adicional
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 // Cerrar la base de datos
-
-
-// Cerrar conexión
 $conn->close();
 ?>

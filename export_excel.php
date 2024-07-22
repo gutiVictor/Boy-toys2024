@@ -19,14 +19,20 @@ if (isset($_POST["export"])) {
 
     if ($result->num_rows > 0) {
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="data.xls"');
+        header('Content-Disposition: attachment;filename="data.csv"'); // Nombre del archivo Excel
         header('Cache-Control: max-age=0');
 
         // Escribir los datos en el archivo Excel
         $output = fopen('php://output', 'w');
+
+        // Escribir los encabezados de la tabla con punto y coma como deliitador
         fputcsv($output, array('ID', 'Referencia', 'Descripción', 'Cantidad', 'Número de Caja', 'Fecha Registro'));
 
+
+
         while($row = $result->fetch_assoc()) {
+
+            //Escribir cada fila  con punto y coma como delimitador
             fputcsv($output, $row);
         }
 
