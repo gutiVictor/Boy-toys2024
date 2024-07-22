@@ -11,31 +11,33 @@
     <!-- Información de contenido -->
     <div class="main">
         <div class="header">
-
-            <!-- esta  -->
             <img src="LOGO-BOY-TOYS.png" alt="Boytoys">
             <div id="dateTime" class="date-time"></div>
         </div>
         <!-- Title -->
-        <h1>app de escritorio de Empaquetado</h1>
+        <h1>App de escritorio de Empaquetado</h1>
         <p>Ver 1.0</p>
         <div class="texto">
             <ul>
                 <li onclick="navigateTo('Entrada.html')"><strong>Entrada</strong></li>
                 <li onclick="navigateTo('ingreso_datos.html')">Ingreso de datos</li>
                 <li onclick="navigateTo('validacion_cantidad.html')">Validación de cantidad</li>                
-                <li onclick="navigateTo('impresion_datos.html')"><strong>Impresión de datos</strong></li>
+                <li onclick="document.getElementById('exportForm').submit();"><strong>Exportar datos</strong></li>
                 <li onclick="navigateTo('salida.html')">Salida</li>
             </ul>
         </div>
     </div>
+
+    <!-- Formulario oculto para exportar datos -->
+    <form id="exportForm" action="export_excel.php" method="post" style="display:none;">
+        <input type="hidden" name="export" value="1">
+    </form>
 
     <script>
         function navigateTo(page) {
             window.location.href = page;
         }
 
-        /* Función para traer la fecha   */
         function updateDateTime() {
             const now = new Date();
             const date = now.toLocaleDateString();

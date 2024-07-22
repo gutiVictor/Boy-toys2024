@@ -25,14 +25,11 @@ if (isset($_POST["export"])) {
         // Escribir los datos en el archivo Excel
         $output = fopen('php://output', 'w');
 
-        // Escribir los encabezados de la tabla con punto y coma como deliitador
+        // Escribir los encabezados de la tabla
         fputcsv($output, array('ID', 'Referencia', 'Descripción', 'Cantidad', 'Número de Caja', 'Fecha Registro'));
 
-
-
+        // Escribir cada fila de datos
         while($row = $result->fetch_assoc()) {
-
-            //Escribir cada fila  con punto y coma como delimitador
             fputcsv($output, $row);
         }
 
@@ -42,5 +39,6 @@ if (isset($_POST["export"])) {
     }
 
     $conn->close();
+    exit;
 }
 ?>
