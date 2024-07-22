@@ -18,19 +18,22 @@ if (isset($_POST["export"])) {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="data.csv"'); // Nombre del archivo Excel
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment;filename="Empaquetado.csv"'); // Nombre del archivo Excel
         header('Cache-Control: max-age=0');
 
-        // Escribir los datos en el archivo Excel
+         // Añadir un BOM (Byte Order Mark) para UTF-8
+         echo "\xEF\xBB\xBF";
+
+        // Escribir los datos en el archivo CSV
         $output = fopen('php://output', 'w');
 
         // Escribir los encabezados de la tabla
-        fputcsv($output, array('ID', 'Referencia', 'Descripción', 'Cantidad', 'Número de Caja', 'Fecha Registro'));
+        fputcsv($output, array('ID', 'Referencia', 'Descripción', 'Cantidad', 'Número de Caja', 'Fecha Registro'), "\t");
 
         // Escribir cada fila de datos
         while($row = $result->fetch_assoc()) {
-            fputcsv($output, $row);
+            fputcsv($output, $row, "\t");
         }
 
         fclose($output);

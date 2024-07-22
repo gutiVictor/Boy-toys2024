@@ -86,7 +86,7 @@ button.return-menu:hover {
 /* justifica los botones y los centra */
 
 .button-container {
-    display: flex;
+    display: flex;   
     justify-content: center;
     gap: 10px; /* Espacio entre los botones */
 }
