@@ -16,8 +16,8 @@
 
         <!-- Formulario de búsqueda -->
         <form id="searchForm">
-            <input type="text" id="referencia" placeholder="Buscar por referencia">
-            <input type="number" id="numero_caja" placeholder="Buscar por número de caja">
+            <input type="text" id="referencia" placeholder="Buscar por referencia" value="<?php echo isset($_GET['referencia']) ? htmlspecialchars($_GET['referencia']) : ''; ?>">
+            <input type="number" id="numero_caja" placeholder="Buscar por número de caja" value="<?php echo isset($_GET['numero_caja']) ? htmlspecialchars($_GET['numero_caja']) : ''; ?>">
             <button type="button" onclick="filterData()">Buscar</button>
         </form>
 
@@ -36,26 +36,21 @@
             die("Error de conexión: " . $conn->connect_error);
         }
 
-        // Establecer el número de resultados por página
-        $results_per_page = 7;
-
-        // Verificar el número de página actual
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $start_from = ($page - 1) * $results_per_page;
-
         // Obtener los parámetros de búsqueda
         $referencia = isset($_GET['referencia']) ? $conn->real_escape_string($_GET['referencia']) : '';
         $numero_caja = isset($_GET['numero_caja']) ? (int)$_GET['numero_caja'] : '';
 
         // Construir la consulta SQL con filtros
-        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro FROM tiendaempaques WHERE 1=1";
+        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
+                FROM tiendaempaques 
+                WHERE 1=1";
         if ($referencia !== '') {
             $sql .= " AND referencias LIKE '%$referencia%'";
         }
         if ($numero_caja !== '') {
             $sql .= " AND `num-caja` = $numero_caja";
         }
-        $sql .= " ORDER BY fecha_registro DESC LIMIT $start_from, $results_per_page";
+        $sql .= " ORDER BY fecha_registro DESC";
 
         $result = $conn->query($sql);
 
@@ -88,27 +83,6 @@
         } else {
             echo "No hay datos registrados.";
         }
-
-        // Calcular el número total de páginas
-        $sql = "SELECT COUNT(*) AS total FROM tiendaempaques WHERE 1=1";
-        if ($referencia !== '') {
-            $sql .= " AND referencias LIKE '%$referencia%'";
-        }
-        if ($numero_caja !== '') {
-            $sql .= " AND `num-caja` = $numero_caja";
-        }
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $total_pages = ceil($row["total"] / $results_per_page);
-
-        // Generar enlaces de paginación
-        echo '<div class="pagination">';
-        for ($i = 1; $i <= $total_pages; $i++) {
-            echo "<a href='leer_datos.php?page=" . $i . "&referencia=" . urlencode($referencia) . "&numero_caja=" . urlencode($numero_caja) . "'";
-            if ($i == $page) echo " class='active'";
-            echo ">" . $i . "</a> ";
-        }
-        echo '</div>';
 
         // Cerrar la conexión
         $conn->close();
