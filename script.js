@@ -9,6 +9,8 @@ const productos = {
   "1234567890": "Muñeca",
   "0987654321": "Sombrilla",
   "1122334455": "Carro de compras",
+  "7045672": "Play-Do licuadora de Batidos Coloridos",
+
   // Añade más productos según sea necesario
 };
 
