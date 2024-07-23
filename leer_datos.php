@@ -14,6 +14,13 @@
         </div>
         <h1>Datos Registrados</h1>
 
+        <!-- Formulario de búsqueda -->
+        <form id="searchForm">
+            <input type="text" id="referencia" placeholder="Buscar por referencia">
+            <input type="number" id="numero_caja" placeholder="Buscar por número de caja">
+            <button type="button" onclick="filterData()">Buscar</button>
+        </form>
+
         <?php
         // Conectarse a la base de datos desde PHP
         $servername = "localhost";
@@ -30,33 +37,42 @@
         }
 
         // Establecer el número de resultados por página
-        $results_per_page = 8;
+        $results_per_page = 7;
 
         // Verificar el número de página actual
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
-        } else {
-            $page = 1;
-        }
-
-        // Calcular el índice inicial de los resultados para la consulta SQL
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $start_from = ($page - 1) * $results_per_page;
 
-        // Preparar SQL para leer los datos con límite de paginación y ordenados por fecha en orden descendente
-        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro FROM tiendaempaques ORDER BY fecha_registro DESC LIMIT $start_from, $results_per_page";
+        // Obtener los parámetros de búsqueda
+        $referencia = isset($_GET['referencia']) ? $conn->real_escape_string($_GET['referencia']) : '';
+        $numero_caja = isset($_GET['numero_caja']) ? (int)$_GET['numero_caja'] : '';
+
+        // Construir la consulta SQL con filtros
+        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro FROM tiendaempaques WHERE 1=1";
+        if ($referencia !== '') {
+            $sql .= " AND referencias LIKE '%$referencia%'";
+        }
+        if ($numero_caja !== '') {
+            $sql .= " AND `num-caja` = $numero_caja";
+        }
+        $sql .= " ORDER BY fecha_registro DESC LIMIT $start_from, $results_per_page";
+
         $result = $conn->query($sql);
 
         // Verificar si hay resultados
         if ($result->num_rows > 0) {
-            echo "<table>
-                    <tr>
-                        <th>Referencia</th>
-                        <th>Descripción del ítem</th>
-                        <th>Cantidad</th>
-                        <th>Número de caja</th>
-                        <th>Fecha de registro</th>
-                        <th>Acciones</th>
-                    </tr>";
+            echo "<table id='dataTable'>
+                    <thead>
+                        <tr>
+                            <th>Referencia</th>
+                            <th>Descripción del ítem</th>
+                            <th>Cantidad</th>
+                            <th>Número de caja</th>
+                            <th>Fecha de registro</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
             // Salida de cada fila de los resultados
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
@@ -65,16 +81,22 @@
                         <td>{$row['cantidad']}</td>
                         <td>{$row['num-caja']}</td>
                         <td>{$row['fecha_registro']}</td>
-                        <td><a href='editar_datos.php?id={$row['id']}'><img  style='width: 20px; height: 20px;' src='edit_icon.png' alt='Editar' title='Editar'>editar</a></td>
+                        <td><a href='editar_datos.php?id={$row['id']}'><img style='width: 20px; height: 20px;' src='edit_icon.png' alt='Editar' title='Editar'>editar</a></td>
                       </tr>";
             }
-            echo "</table>";
+            echo "</tbody></table>";
         } else {
             echo "No hay datos registrados.";
         }
 
         // Calcular el número total de páginas
-        $sql = "SELECT COUNT(*) AS total FROM tiendaempaques";
+        $sql = "SELECT COUNT(*) AS total FROM tiendaempaques WHERE 1=1";
+        if ($referencia !== '') {
+            $sql .= " AND referencias LIKE '%$referencia%'";
+        }
+        if ($numero_caja !== '') {
+            $sql .= " AND `num-caja` = $numero_caja";
+        }
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $total_pages = ceil($row["total"] / $results_per_page);
@@ -82,7 +104,7 @@
         // Generar enlaces de paginación
         echo '<div class="pagination">';
         for ($i = 1; $i <= $total_pages; $i++) {
-            echo "<a href='leer_datos.php?page=" . $i . "'";
+            echo "<a href='leer_datos.php?page=" . $i . "&referencia=" . urlencode($referencia) . "&numero_caja=" . urlencode($numero_caja) . "'";
             if ($i == $page) echo " class='active'";
             echo ">" . $i . "</a> ";
         }
@@ -100,6 +122,24 @@
     <script>
         function navigateTo(page) {
             window.location.href = page;
+        }
+
+        function filterData() {
+            const referencia = document.getElementById('referencia').value;
+            const numero_caja = document.getElementById('numero_caja').value;
+            
+            // Obtener URL de la página actual
+            const url = new URL(window.location.href);
+            
+            // Actualizar los parámetros de la URL
+            if (referencia) url.searchParams.set('referencia', referencia);
+            else url.searchParams.delete('referencia');
+            
+            if (numero_caja) url.searchParams.set('numero_caja', numero_caja);
+            else url.searchParams.delete('numero_caja');
+            
+            // Redirigir a la nueva URL
+            window.location.href = url.toString();
         }
     </script>
 </body>
