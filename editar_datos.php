@@ -41,36 +41,47 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style_LeerDatos.css">
+    <link rel="stylesheet" href="style_EditarDatos.css">
     <link rel="icon" href="LOGO-BOY-TOYS.png" type="image/png">
     <title>Editar Datos</title>
 </head>
 <body>
-    <div class="main">
-        <div class="header">
-            <img src="LOGO-BOY-TOYS.png" alt="Boytoys" />
-        </div>
-        <h1>Editar Datos</h1>
+    <div class="container">
+        <header>
+            <img src="LOGO-BOY-TOYS.png" alt="Boytoys" class="logo"/>
+        </header>
+        <main>
+            <h1>Editar Datos</h1>
 
-        <form action="procesar_edicion.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <label for="referencia">Referencia:</label>
-            <input type="text" id="referencia" name="referencia" value="<?php echo $row['referencias']; ?>" required><br>
+            <form action="procesar_edicion.php" method="post" class="edit-form">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
 
-            <label for="descripcion">Descripción del ítem:</label>
-            <input type="text" id="descripcion" name="descripcion" value="<?php echo $row['des_Item']; ?>" required><br>
+                <div class="form-group">
+                    <label for="referencia">Referencia:</label>
+                    <input type="text" id="referencia" name="referencia" value="<?php echo htmlspecialchars($row['referencias']); ?>" required>
+                </div>
 
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" id="cantidad" name="cantidad" value="<?php echo $row['cantidad']; ?>" required><br>
+                <div class="form-group">
+                    <label for="descripcion">Descripción del ítem:</label>
+                    <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($row['des_Item']); ?>" required>
+                </div>
 
-            <label for="numero_caja">Número de caja:</label>
-            <input type="number" id="numero_caja" name="numero_caja" value="<?php echo $row['num-caja']; ?>" required><br>
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" value="<?php echo htmlspecialchars($row['cantidad']); ?>" required>
+                </div>
 
-            <div class="button-container">
-                <button type="submit">Actualizar</button>
-                <button type="button" onclick="navigateTo('leer_datos.php')">Cancelar</button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="numero_caja">Número de caja:</label>
+                    <input type="number" id="numero_caja" name="numero_caja" value="<?php echo htmlspecialchars($row['num-caja']); ?>" required>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit">Actualizar</button>
+                    <button type="button" onclick="navigateTo('leer_datos.php')">Cancelar</button>
+                </div>
+            </form>
+        </main>
     </div>
 
     <script>
