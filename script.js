@@ -53,7 +53,15 @@ document.addEventListener("keydown", function(event) {
   if (event.target.id === "numero_caja" && event.key === "Enter") {
     event.preventDefault();
 
-    // Enviar el formulario (puedes ajustarlo )
-    document.getElementById("formulario").submit();
+    // Enviar el formulario
+    document.getElementById("mi-formulario").submit();
   }
+});
+
+// Agregar un evento de envío al formulario para enfocar el campo de referencia después de enviar
+document.getElementById("mi-formulario").addEventListener("submit", function(event) {
+  // Establecer un breve retraso antes de enfocar el campo de referencia para asegurarse de que el formulario haya terminado de enviarse
+  setTimeout(function() {
+    document.getElementById("referencia").focus();
+  }, 500);
 });

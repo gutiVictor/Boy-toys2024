@@ -12,14 +12,14 @@ body {
 .main {
     width: 90%;
     max-width: 400px;
-    background-color: #ffffff;
+    background-color: #333131;
     padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 .header img {
-    max-width: 80px;
+    max-width: 150px;
     display: block;
     margin: 0 auto 10px;
 }
@@ -43,7 +43,7 @@ form {
 label {
     margin-bottom: 3px;
     font-size: 0.9em;
-    color: #555555;
+    color: #ffffff;
 }
 
 input[type="text"],
