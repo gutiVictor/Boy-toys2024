@@ -59,7 +59,7 @@
             echo "<table id='dataTable'>
                     <thead>
                         <tr>
-                            <th>Referencia</th>
+                            <th>Codigo/Barras</th>
                             <th>Descripción del ítem</th>
                             <th>Cantidad</th>
                             <th>Número de caja</th>
