@@ -15,25 +15,27 @@
         <h1>Ingresar Datos</h1>
 
         <form action="conecction.php" method="post">
-            <label for="referencia">Codigo/Barras:</label>
-            <input type="text" id="referencia" name="referencia" required /><br />
-
-            <label for="descripcion">Descripción del ítem:</label>
-            <input type="text" id="descripcion" name="descripcion" required /><br />
-
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" id="cantidad" name="cantidad" required /><br />
-
-            <label for="numero_caja">Número de caja:</label>
-            <input type="number" id="numero_caja" name="numero_caja" required /><br />
+            <div class="form-group">
+                <label for="referencia">Codigo/Barras:</label>
+                <input type="text" id="referencia" name="referencia" required />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción del ítem:</label>
+                <input type="text" id="descripcion" name="descripcion" required />
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required />
+            </div>
+            <div class="form-group">
+                <label for="numero_caja">Número de caja:</label>
+                <input type="number" id="numero_caja" name="numero_caja" required />
+            </div>
 
             <div class="button-container">
                 <button type="submit">Enviar</button>
-                   <!-- Botón para leer los datos -->
-                   <button type="button" onclick="navigateTo('leer_datos.php')">Leer Datos</button>
-                   <!-- Botón para volver -->
-                  <button type="button" onclick="navigateTo('index.html')">Volver al Menú</button>
-             
+                <button type="button" onclick="navigateTo('leer_datos.php')">Leer Datos</button>
+                <button type="button" onclick="navigateTo('index.html')">Volver al Menú</button>
             </div>
         </form>
     </div>

@@ -34,7 +34,7 @@
 
         // Obtener el parámetro de paginación
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $limit = 6;
+        $limit = 5;
         $offset = ($page - 1) * $limit;
 
         $referencia = isset($_GET['referencia']) ? $_GET['referencia'] : '';
