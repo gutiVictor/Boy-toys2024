@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
 
                 <div class="form-group">
-                    <label for="referencia">Referencia:</label>
+                    <label for="referencia">Codigo/Barras:</label>
                     <input type="text" id="referencia" name="referencia" value="<?php echo htmlspecialchars($row['referencias']); ?>" required>
                 </div>
 
