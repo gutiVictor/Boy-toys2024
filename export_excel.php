@@ -29,7 +29,7 @@ if (isset($_POST["export"])) {
         $output = fopen('php://output', 'w');
 
         // Escribir los encabezados de la tabla
-        fputcsv($output, array('ID', 'Referencia', 'Descripción', 'Cantidad', 'Número de Caja', 'Fecha Registro'), "\t");
+        fputcsv($output, array('ID', 'codigo', 'Descripción', 'Cantidad', 'Número de Caja', 'Fecha Registro'), "\t");
 
         // Escribir cada fila de datos
         while($row = $result->fetch_assoc()) {

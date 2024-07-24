@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tiendaempaques` (
   `id` int(11) NOT NULL,
-  `referencias` varchar(255) NOT NULL,
+  `codigo_barras` varchar(255) NOT NULL,
   `des_Item` varchar(255) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `num-caja` int(11) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `tiendaempaques` (
 -- Volcado de datos para la tabla `tiendaempaques`
 --
 
-INSERT INTO `tiendaempaques` (`id`, `referencias`, `des_Item`, `cantidad`, `num-caja`, `fecha_registro`) VALUES
+INSERT INTO `tiendaempaques` (`id`, `codigo_barras`, `des_Item`, `cantidad`, `num-caja`, `fecha_registro`) VALUES
 (1, '6672362', 'carro', 1, 2, '2024-07-19 16:52:53');
 
 --

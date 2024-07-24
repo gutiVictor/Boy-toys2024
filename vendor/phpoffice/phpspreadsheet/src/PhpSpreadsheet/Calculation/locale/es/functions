@@ -224,7 +224,7 @@ TRUE = VERDADERO
 XOR = XO
 
 ##
-## Funciones de búsqueda y referencia (Lookup & Reference Functions)
+## Funciones de búsqueda y codigo (Lookup & Reference Functions)
 ##
 ADDRESS = DIRECCION
 AREAS = AREAS

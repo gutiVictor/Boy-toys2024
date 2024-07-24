@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    $referencia = $_POST['referencia'];
+    $codigo = $_POST['codigo'];
     $descripcion = $_POST['descripcion'];
     $cantidad = $_POST['cantidad'];
     $numero_caja = $_POST['numero_caja'];
@@ -21,7 +21,7 @@ if (isset($_POST['id'])) {
     }
 
     // Preparar SQL para actualizar los datos
-    $sql = "UPDATE tiendaempaques SET referencias = '$referencia', des_Item = '$descripcion', cantidad = $cantidad, `num-caja` = $numero_caja WHERE id = $id";
+    $sql = "UPDATE tiendaempaques SET codigo_barras = '$codigo', des_Item = '$descripcion', cantidad = $cantidad, `num-caja` = $numero_caja WHERE id = $id";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {

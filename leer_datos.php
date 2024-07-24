@@ -10,7 +10,7 @@
 <body>
     <div class="main">
         <form method="GET">
-            <input type="text" name="referencia" placeholder="Ingrese El Código de Barras">
+            <input type="text" name="codigo" placeholder="Ingrese El Código de Barras">
             <input type="text" name="num_caja" placeholder="Ingrese El Número de Caja">
             <button type="submit">Buscar</button>
         </form>
@@ -37,13 +37,13 @@
         $limit = 5;
         $offset = ($page - 1) * $limit;
 
-        $referencia = isset($_GET['referencia']) ? $_GET['referencia'] : '';
+        $codigo = isset($_GET['codigo']) ? $_GET['codigo'] : '';
         $num_caja = isset($_GET['num_caja']) ? $_GET['num_caja'] : '';
 
         // Construir la consulta SQL con filtros y límites
         $conditions = [];
-        if (!empty($referencia)) {
-            $conditions[] = "referencias LIKE '%$referencia%'";
+        if (!empty($codigo)) {
+            $conditions[] = "codigo_barras LIKE '%$codigo%'";
         }
         if (!empty($num_caja)) {
             $conditions[] = "`num-caja` LIKE '%$num_caja%'";
@@ -53,7 +53,7 @@
             $whereClause = 'WHERE ' . implode(' AND ', $conditions);
         }
 
-        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
+        $sql = "SELECT id, codigo_barras, des_Item, cantidad, `num-caja`, fecha_registro 
                 FROM tiendaempaques 
                 $whereClause
                 ORDER BY fecha_registro DESC LIMIT $limit OFFSET $offset";
@@ -77,7 +77,7 @@
             // Salida de cada fila de los resultados
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['referencias']}</td>
+                        <td>{$row['codigo_barras']}</td>
                         <td>{$row['des_Item']}</td>
                         <td>{$row['cantidad']}</td>
                         <td>{$row['num-caja']}</td>
@@ -103,15 +103,15 @@
         <!-- Paginación -->
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="?page=<?php echo $page - 1; ?>&referencia=<?php echo $referencia; ?>&num_caja=<?php echo $num_caja; ?>">&laquo; Anterior</a>
+                <a href="?page=<?php echo $page - 1; ?>&codigo=<?php echo $codigo; ?>&num_caja=<?php echo $num_caja; ?>">&laquo; Anterior</a>
             <?php endif; ?>
 
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>&num_caja=<?php echo $num_caja; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
+                <a href="?page=<?php echo $i; ?>&codigo=<?php echo $codigo; ?>&num_caja=<?php echo $num_caja; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
             <?php endfor; ?>
 
             <?php if ($page < $totalPages): ?>
-                <a href="?page=<?php echo $page + 1; ?>&referencia=<?php echo $referencia; ?>&num_caja=<?php echo $num_caja; ?>">Siguiente &raquo;</a>
+                <a href="?page=<?php echo $page + 1; ?>&codigo=<?php echo $codigo; ?>&num_caja=<?php echo $num_caja; ?>">Siguiente &raquo;</a>
             <?php endif; ?>
         </div>
 

@@ -14,14 +14,14 @@ if ($conn->connect_error) {
 }
 
 // Recibir y limpiar los datos del formulario
-$referencia = mysqli_real_escape_string($conn, $_POST['referencia']);
+$codigo = mysqli_real_escape_string($conn, $_POST['codigo']);
 $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
 $cantidad = (int)$_POST['cantidad'];
 $numero_caja = (int)$_POST['numero_caja'];
 
 // Preparar SQL para insertar los datos, incluyendo la fecha y hora
-$sql = "INSERT INTO tiendaempaques (referencias, des_Item, cantidad, `num-caja`, fecha_registro)
-        VALUES ('$referencia', '$descripcion', $cantidad, $numero_caja, CURRENT_TIMESTAMP)";
+$sql = "INSERT INTO tiendaempaques (codigo_barras, des_Item, cantidad, `num-caja`, fecha_registro)
+        VALUES ('$codigo', '$descripcion', $cantidad, $numero_caja, CURRENT_TIMESTAMP)";
 
 // Ejecutar la consulta 
 if ($conn->query($sql) === TRUE) {

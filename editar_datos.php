@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     }
 
     // Preparar SQL para leer los datos específicos
-    $sql = "SELECT referencias, des_Item, cantidad, `num-caja` FROM tiendaempaques WHERE id = $id";
+    $sql = "SELECT codigo_barras, des_Item, cantidad, `num-caja` FROM tiendaempaques WHERE id = $id";
     $result = $conn->query($sql);
 
     // Verificar si hay resultados
@@ -57,8 +57,8 @@ if (isset($_GET['id'])) {
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
 
                 <div class="form-group">
-                    <label for="referencia">Codigo/Barras:</label>
-                    <input type="text" id="referencia" name="referencia" value="<?php echo htmlspecialchars($row['referencias']); ?>" required>
+                    <label for="codigo">Codigo/Barras:</label>
+                    <input type="text" id="codigo" name="codigo" value="<?php echo htmlspecialchars($row['codigo_barras']); ?>" required>
                 </div>
 
                 <div class="form-group">

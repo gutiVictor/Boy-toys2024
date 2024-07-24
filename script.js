@@ -19,16 +19,16 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("keydown", function(event) {
-  // Verificar si el foco está en el campo de referencia y si se presionó Enter
-  if (event.target.id === "referencia" && event.key === "Enter") {
+  // Verificar si el foco está en el campo de codigo y si se presionó Enter
+  if (event.target.id === "codigo" && event.key === "Enter") {
     // Evitar que se envíe el formulario automáticamente
     event.preventDefault();
 
     // Obtener el valor del código de barras leído
-    var codigoBarras = document.getElementById("referencia").value;
+    var codigoBarras = document.getElementById("codigo").value;
 
-    // Insertar el código de barras en el campo de referencia
-    document.getElementById("referencia").value = codigoBarras;
+    // Insertar el código de barras en el campo de codigo
+    document.getElementById("codigo").value = codigoBarras;
 
     // Buscar la descripción del producto y actualizar el campo correspondiente
     if (productos[codigoBarras]) {
@@ -58,10 +58,10 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
-// Agregar un evento de envío al formulario para enfocar el campo de referencia después de enviar
+// Agregar un evento de envío al formulario para enfocar el campo de codigo después de enviar
 document.getElementById("mi-formulario").addEventListener("submit", function(event) {
-  // Establecer un breve retraso antes de enfocar el campo de referencia para asegurarse de que el formulario haya terminado de enviarse
+  // Establecer un breve retraso antes de enfocar el campo de codigo para asegurarse de que el formulario haya terminado de enviarse
   setTimeout(function() {
-    document.getElementById("referencia").focus();
+    document.getElementById("codigo").focus();
   }, 500);
 });
