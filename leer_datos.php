@@ -9,17 +9,12 @@
 </head>
 <body>
     <div class="main">
-        <div class="header">
-            <img src="LOGO-BOY-TOYS.png" alt="Boytoys" />
-        </div>
-        <h1>Datos Registrados</h1>
-
-        <!-- Formulario de búsqueda -->
-        <form id="searchForm">
-            <input type="text" id="referencia" placeholder="Buscar por referencia" value="<?php echo isset($_GET['referencia']) ? htmlspecialchars($_GET['referencia']) : ''; ?>">
-            <input type="number" id="numero_caja" placeholder="Buscar por número de caja" value="<?php echo isset($_GET['numero_caja']) ? htmlspecialchars($_GET['numero_caja']) : ''; ?>">
-            <button type="button" onclick="filterData()">Buscar</button>
+        <form method="GET">
+            <input type="text" name="referencia" placeholder="Ingrese El Código de Barras">
+            <button type="submit">Buscar</button>
         </form>
+
+        <h1>Datos Registrados</h1>
 
         <?php
         // Conectarse a la base de datos desde PHP
@@ -36,21 +31,24 @@
             die("Error de conexión: " . $conn->connect_error);
         }
 
-        // Obtener los parámetros de búsqueda
-        $referencia = isset($_GET['referencia']) ? $conn->real_escape_string($_GET['referencia']) : '';
-        $numero_caja = isset($_GET['numero_caja']) ? (int)$_GET['numero_caja'] : '';
+        // Obtener el parámetro de paginación
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $limit = 6;
+        $offset = ($page - 1) * $limit;
 
-        // Construir la consulta SQL con filtros
-        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
-                FROM tiendaempaques 
-                WHERE 1=1";
-        if ($referencia !== '') {
-            $sql .= " AND referencias LIKE '%$referencia%'";
+        $referencia = isset($_GET['referencia']) ? $_GET['referencia'] : '';
+
+        // Construir la consulta SQL con filtros y límites
+        if (!empty($referencia)) {
+            $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
+                    FROM tiendaempaques 
+                    WHERE referencias LIKE '%$referencia%'
+                    ORDER BY fecha_registro DESC LIMIT $limit OFFSET $offset";
+        } else {
+            $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
+                    FROM tiendaempaques 
+                    ORDER BY fecha_registro DESC LIMIT $limit OFFSET $offset";
         }
-        if ($numero_caja !== '') {
-            $sql .= " AND `num-caja` = $numero_caja";
-        }
-        $sql .= " ORDER BY fecha_registro DESC";
 
         $result = $conn->query($sql);
 
@@ -84,9 +82,33 @@
             echo "No hay datos registrados.";
         }
 
+        // Obtener el número total de registros para paginación
+        $sqlCount = "SELECT COUNT(*) as total FROM tiendaempaques";
+        if (!empty($referencia)) {
+            $sqlCount .= " WHERE referencias LIKE '%$referencia%'";
+        }
+        $resultCount = $conn->query($sqlCount);
+        $totalRows = $resultCount->fetch_assoc()['total'];
+        $totalPages = ceil($totalRows / $limit);
+
         // Cerrar la conexión
         $conn->close();
         ?>
+
+        <!-- Paginación -->
+        <div class="pagination">
+            <?php if ($page > 1): ?>
+                <a href="?page=<?php echo $page - 1; ?>&referencia=<?php echo $referencia; ?>">&laquo; Anterior</a>
+            <?php endif; ?>
+
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
+            <?php endfor; ?>
+
+            <?php if ($page < $totalPages): ?>
+                <a href="?page=<?php echo $page + 1; ?>&referencia=<?php echo $referencia; ?>">Siguiente &raquo;</a>
+            <?php endif; ?>
+        </div>
 
         <div class="button-container">
             <button onclick="navigateTo('ingreso_datos.html')">Regresar</button>
@@ -96,24 +118,6 @@
     <script>
         function navigateTo(page) {
             window.location.href = page;
-        }
-
-        function filterData() {
-            const referencia = document.getElementById('referencia').value;
-            const numero_caja = document.getElementById('numero_caja').value;
-            
-            // Obtener URL de la página actual
-            const url = new URL(window.location.href);
-            
-            // Actualizar los parámetros de la URL
-            if (referencia) url.searchParams.set('referencia', referencia);
-            else url.searchParams.delete('referencia');
-            
-            if (numero_caja) url.searchParams.set('numero_caja', numero_caja);
-            else url.searchParams.delete('numero_caja');
-            
-            // Redirigir a la nueva URL
-            window.location.href = url.toString();
         }
     </script>
 </body>
