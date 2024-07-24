@@ -11,6 +11,7 @@
     <div class="main">
         <form method="GET">
             <input type="text" name="referencia" placeholder="Ingrese El Código de Barras">
+            <input type="text" name="num_caja" placeholder="Ingrese El Número de Caja">
             <button type="submit">Buscar</button>
         </form>
 
@@ -37,18 +38,25 @@
         $offset = ($page - 1) * $limit;
 
         $referencia = isset($_GET['referencia']) ? $_GET['referencia'] : '';
+        $num_caja = isset($_GET['num_caja']) ? $_GET['num_caja'] : '';
 
         // Construir la consulta SQL con filtros y límites
+        $conditions = [];
         if (!empty($referencia)) {
-            $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
-                    FROM tiendaempaques 
-                    WHERE referencias LIKE '%$referencia%'
-                    ORDER BY fecha_registro DESC LIMIT $limit OFFSET $offset";
-        } else {
-            $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
-                    FROM tiendaempaques 
-                    ORDER BY fecha_registro DESC LIMIT $limit OFFSET $offset";
+            $conditions[] = "referencias LIKE '%$referencia%'";
         }
+        if (!empty($num_caja)) {
+            $conditions[] = "`num-caja` LIKE '%$num_caja%'";
+        }
+        $whereClause = '';
+        if (count($conditions) > 0) {
+            $whereClause = 'WHERE ' . implode(' AND ', $conditions);
+        }
+
+        $sql = "SELECT id, referencias, des_Item, cantidad, `num-caja`, fecha_registro 
+                FROM tiendaempaques 
+                $whereClause
+                ORDER BY fecha_registro DESC LIMIT $limit OFFSET $offset";
 
         $result = $conn->query($sql);
 
@@ -83,10 +91,7 @@
         }
 
         // Obtener el número total de registros para paginación
-        $sqlCount = "SELECT COUNT(*) as total FROM tiendaempaques";
-        if (!empty($referencia)) {
-            $sqlCount .= " WHERE referencias LIKE '%$referencia%'";
-        }
+        $sqlCount = "SELECT COUNT(*) as total FROM tiendaempaques $whereClause";
         $resultCount = $conn->query($sqlCount);
         $totalRows = $resultCount->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $limit);
@@ -98,15 +103,15 @@
         <!-- Paginación -->
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="?page=<?php echo $page - 1; ?>&referencia=<?php echo $referencia; ?>">&laquo; Anterior</a>
+                <a href="?page=<?php echo $page - 1; ?>&referencia=<?php echo $referencia; ?>&num_caja=<?php echo $num_caja; ?>">&laquo; Anterior</a>
             <?php endif; ?>
 
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
+                <a href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>&num_caja=<?php echo $num_caja; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
             <?php endfor; ?>
 
             <?php if ($page < $totalPages): ?>
-                <a href="?page=<?php echo $page + 1; ?>&referencia=<?php echo $referencia; ?>">Siguiente &raquo;</a>
+                <a href="?page=<?php echo $page + 1; ?>&referencia=<?php echo $referencia; ?>&num_caja=<?php echo $num_caja; ?>">Siguiente &raquo;</a>
             <?php endif; ?>
         </div>
 
