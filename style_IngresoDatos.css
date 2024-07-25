@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #121212; /* Fondo oscuro */
+    color: #BB86FC; /* Color de texto claro */
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,9 +13,9 @@ body {
 .main {
     width: 90%;
     max-width: 400px;
-    background-color: #333131;
+    background-color: #1f1f1f; /* Fondo oscuro para el contenido */
     padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
 
@@ -25,7 +26,7 @@ body {
 }
 
 h1 {
-    color: #333333;
+    color: #BB86FC;
     text-align: center;
     font-size: 1.5em;
     margin-bottom: 15px;
@@ -49,10 +50,12 @@ label {
 input[type="text"],
 input[type="number"] {
     padding: 8px;
-    border: 1px solid #dddddd;
+    border: 1px solid #333333; /* Borde oscuro */
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #333333; /* Fondo del campo */
+    color: #ffffff; /* Color de texto del campo */
 }
 
 .button-container {
@@ -63,90 +66,14 @@ input[type="number"] {
 
 button {
     padding: 8px 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #BB86FC;
+    color: #1f1f1f; /* Color de texto oscuro */
     border: none;
-    border-radius: 5px;body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    
-    .main {
-        width: 90%;
-        max-width: 400px;
-        background-color: #ffffff;
-        padding: 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-    }
-    
-    .header img {
-        max-width: 80px;
-        display: block;
-        margin: 0 auto 10px;
-    }
-    
-    h1 {
-        color: #333333;
-        text-align: center;
-        font-size: 1.5em;
-        margin-bottom: 15px;
-    }
-    
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .form-group {
-        margin-bottom: 10px;
-    }
-    
-    label {
-        margin-bottom: 3px;
-        font-size: 0.9em;
-        color: #555555;
-    }
-    
-    input[type="text"],
-    input[type="number"] {
-        padding: 8px;
-        border: 1px solid #dddddd;
-        border-radius: 5px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-    }
-    
-    button {
-        padding: 8px 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 0.9em;
-    }
-    
-    button:hover {
-        background-color: #45a049;
-    }
-    
+    border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #925bca; /* Color de fondo al pasar el ratón */
 }
