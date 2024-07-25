@@ -1,8 +1,7 @@
-/* style_EditarDatos.css */
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #121212; /* Fondo oscuro */
+    color: #BB86FC; /* Color de texto claro */
     margin: 0;
     padding: 0;
 }
@@ -11,9 +10,9 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #1f1f1f; /* Fondo oscuro para el contenido */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 header {
@@ -32,6 +31,7 @@ main {
 
 h1 {
     margin-bottom: 20px;
+    color: #BB86FC; /* Color azul para el título */
 }
 
 .edit-form {
@@ -51,13 +51,16 @@ h1 {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #ffffff; /* Color blanco para las etiquetas */
 }
 
 .form-group input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #333333; /* Borde oscuro */
     border-radius: 4px;
+    background-color: #333333; /* Fondo del campo */
+    color: #ffffff; /* Color de texto del campo */
 }
 
 .button-container {
@@ -65,8 +68,8 @@ h1 {
 }
 
 .button-container button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #BB86FC;
+    color: #1f1f1f; /* Color de texto oscuro */
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -77,7 +80,7 @@ h1 {
 }
 
 .button-container button:hover {
-    background-color: #0056b3;
+    background-color: #925bca; /* Color de fondo al pasar el ratón */
 }
 
 .button-container button[type="button"] {
