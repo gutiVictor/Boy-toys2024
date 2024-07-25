@@ -1,31 +1,48 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #121212; /* Fondo oscuro */
+    color: #E0E0E0; /* Texto claro */
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .main {
     width: 80%;
     max-width: 1000px;
-    background-color: #ffffff;
+    background-color: #1E1E1E; /* Fondo un poco más claro que el body */
     padding: 20px;
     margin-top: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
 
-.header img {
-    max-width: 100px;
-    margin-bottom: 20px;
-}
 
 h1 {
-    color: #333333;
+    color: #BB86FC; /* Título con color de acento */
     text-align: center;
+}
+
+form input[type="text"] {
+    background-color: #2C2C2C; /* Fondo del input oscuro */
+    color: #E0E0E0; /* Texto claro */
+    border: 1px solid #BB86FC; /* Borde con color de acento */
+    border-radius: 4px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+form button {
+    background-color: #BB86FC; /* Botón con color de acento */
+    color: #121212; /* Texto oscuro */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #9A67EA; /* Botón más oscuro al pasar el ratón */
 }
 
 table {
@@ -37,17 +54,29 @@ table {
 th, td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #dddddd;
-}
-
-th {
-    background-color: #f2f2f2;
-    color: #333333;
+    border-bottom: 1px solid #333333; /* Borde de las celdas más claro */
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #333333; /* Fondo de las filas al pasar el ratón */
 }
+.pagination a {
+    color: #BB86FC; /* Enlaces de paginación con color de acento */
+    padding: 7px;
+    text-decoration: none;
+    border: 1px solid #BB86FC; /* Borde con color de acento */
+    margin: 0 2px;
+    border-radius: 4px;
+}
+.pagination a.active {
+    background-color: #BB86FC; /* Fondo de enlace activo */
+    color: #121212; /* Texto de enlace activo */
+}
+
+.pagination a:hover {
+    background-color: #9A67EA; /* Fondo de enlace al pasar el ratón */
+}
+
 
 .button-container {
     margin-top: 20px;
@@ -56,13 +85,16 @@ tr:hover {
 
 button {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #BB86FC; /* Botón con color de acento */
+    color: #121212; /* Texto oscuro */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-
 button:hover {
-    background-color: #45a049;
+    background-color: #9A67EA; /* Botón más oscuro al pasar el ratón */
 }
+
+
+
+

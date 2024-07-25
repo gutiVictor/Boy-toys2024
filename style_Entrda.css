@@ -1,49 +1,84 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Fondo gris claro */
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Fondo gris claro */
     color: #333; /* Color de texto oscuro */
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
 .main {
     background-color: #fff; /* Fondo blanco para el contenido */
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center; /* Centrar contenido */
-    width: 100%;
-}
-
-h1 {
-    color: #4CAF50; /* Color verde para el título */
+    width: 80%;
+    max-width: 800px;
 }
 
 .header img {
     display: block;
-    margin: 0 auto; /* Centrar la imagen */
-    width: 450px;
-    height: 250px;
+    margin: 0 auto 20px auto; /* Centrar la imagen y añadir margen inferior */
+    width: 150px;
+    height: auto;
+}
+
+h1 {
+    color: #007bff; /* Color azul para el título principal */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.software-info {
+    text-align: left; /* Alinear texto a la izquierda */
+    margin-top: 20px;
+}
+
+.software-info h2 {
+    color: #007bff; /* Color azul para los títulos */
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.software-info p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.software-info ul {
+    list-style-type: disc; /* Puntos de lista con viñetas */
+    margin-left: 20px;
+    font-size: 1rem;
+}
+
+.software-info ul li {
+    margin-bottom: 10px;
 }
 
 button {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background-color: transparent; /* Fondo transparente */
-    border: 2px solid red; /* Borde rojo */
-    color: red; /* Texto rojo */
+    background-color: #007bff; /* Fondo azul */
+    border: none;
+    color: white; /* Texto blanco */
     padding: 10px 20px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: red; /* Fondo rojo al pasar el ratón */
-    color: white; /* Texto blanco al pasar el ratón */
+    background-color: #0056b3; /* Fondo azul oscuro al pasar el ratón */
+    transform: scale(1.05); /* Aumentar tamaño al pasar el ratón */
 }

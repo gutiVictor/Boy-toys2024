@@ -35,7 +35,7 @@
 
         // Obtener el parámetro de paginación
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $limit = 5;
+        $limit = 7;
         $offset = ($page - 1) * $limit;
 
         $codigo = isset($_GET['codigo']) ? $_GET['codigo'] : '';
