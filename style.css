@@ -62,7 +62,7 @@ ul li:hover {
 .date-time {
     position: absolute; /* Posición absoluta dentro del div header */
     top: 310px;
-    right: 150px;
+    right: 120px;
     font-size: 1.2em;
     color: #5c5656;
 }
