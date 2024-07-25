@@ -60,6 +60,10 @@ if (isset($_GET['id'])) {
                     <label for="codigo">Codigo/Barras:</label>
                     <input type="text" id="codigo" name="codigo" value="<?php echo htmlspecialchars($row['codigo_barras']); ?>" required>
                 </div>
+                <div class="form-group">
+                    <label for="ref">Ref:</label>
+                    <input type="text" id="ref" name="ref" value="<?php echo htmlspecialchars($row['Ref']); ?>" required>
+                </div>
 
                 <div class="form-group">
                     <label for="descripcion">Descripción del ítem:</label>
@@ -76,10 +80,7 @@ if (isset($_GET['id'])) {
                     <input type="number" id="numero_caja" name="numero_caja" value="<?php echo htmlspecialchars($row['num-caja']); ?>" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="ref">Ref:</label>
-                    <input type="text" id="ref" name="ref" value="<?php echo htmlspecialchars($row['Ref']); ?>" required>
-                </div>
+                
 
                 <div class="button-container">
                     <button type="submit">Actualizar</button>

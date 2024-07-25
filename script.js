@@ -48,22 +48,44 @@ document.addEventListener("keydown", function(event) {
     event.preventDefault();
 
     // Mover el foco al campo de número de caja
-    document.getElementById("numero_caja").focus();
+    document.getElementById("num-caja").focus();
   }
 
   // Verificar si el foco está en el campo de número de caja y si se presionó Enter
-  if (event.target.id === "numero_caja" && event.key === "Enter") {
+  if (event.target.id === "num-caja" && event.key === "Enter") {
     event.preventDefault();
 
-    // Enviar el formulario
-    document.getElementById("mi-formulario").submit();
+    // Validar el campo de número de caja antes de enviar el formulario
+    if (!validarNumeroCaja()) {
+      event.preventDefault();
+    } else {
+      document.getElementById("mi-formulario").submit();
+    }
   }
 });
 
-// Agregar un evento de envío al formulario para enfocar el campo de codigo después de enviar
+// Función para validar el campo de número de caja
+function validarNumeroCaja() {
+    const numeroCaja = document.getElementById("num-caja").value;
+    const mensajeError = document.getElementById("mensaje-error");
+
+    if (!numeroCaja || numeroCaja <= 0) {
+        mensajeError.textContent = "El número de caja debe ser mayor a 0.";
+        return false;
+    } else {
+        mensajeError.textContent = "";
+        return true;
+    }
+}
+
+// Evento de envío del formulario
 document.getElementById("mi-formulario").addEventListener("submit", function(event) {
-  // Establecer un breve retraso antes de enfocar el campo de codigo para asegurarse de que el formulario haya terminado de enviarse
-  setTimeout(function() {
-    document.getElementById("codigo").focus();
-  }, 500);
+    if (!validarNumeroCaja()) {
+        event.preventDefault();
+    } else {
+        // Establecer un breve retraso antes de enfocar el campo de codigo para asegurarse de que el formulario haya terminado de enviarse
+        setTimeout(function() {
+            document.getElementById("codigo").focus();
+        }, 500);
+    }
 });

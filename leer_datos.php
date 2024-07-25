@@ -71,10 +71,12 @@
                     <thead>
                         <tr>
                             <th>Código/Barras</th>
+                            <th>Ref</th> <!-- Agregado Ref -->
                             <th>Descripción del ítem</th>
+                            
                             <th>Cantidad</th>
                             <th>Número de caja</th>
-                            <th>Ref</th> <!-- Agregado Ref -->
+                            
                             <th>Fecha de registro</th>
                             <th>Acciones</th>
                         </tr>
@@ -84,10 +86,12 @@
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
                         <td>{$row['codigo_barras']}</td>
+                         <td>{$row['ref']}</td> <!-- Agregado Ref -->
                         <td>{$row['des_Item']}</td>
+                       
                         <td>{$row['cantidad']}</td>
                         <td>{$row['num-caja']}</td>
-                        <td>{$row['ref']}</td> <!-- Agregado Ref -->
+                        
                         <td>{$row['fecha_registro']}</td>
                         <td><a href='editar_datos.php?id={$row['id']}'><img style='width: 20px; height: 20px;' src='edit_icon.png' alt='Editar' title='Editar'>editar</a></td>
                       </tr>";
