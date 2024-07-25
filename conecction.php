@@ -18,10 +18,11 @@ $codigo = mysqli_real_escape_string($conn, $_POST['codigo']);
 $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
 $cantidad = (int)$_POST['cantidad'];
 $numero_caja = (int)$_POST['numero_caja'];
+$ref = mysqli_real_escape_string($conn, $_POST['ref']); // Recibir el dato del campo Ref
 
 // Preparar SQL para insertar los datos, incluyendo la fecha y hora
-$sql = "INSERT INTO tiendaempaques (codigo_barras, des_Item, cantidad, `num-caja`, fecha_registro)
-        VALUES ('$codigo', '$descripcion', $cantidad, $numero_caja, CURRENT_TIMESTAMP)";
+$sql = "INSERT INTO tiendaempaques (codigo_barras, des_Item, cantidad, `num-caja`, Ref, fecha_registro)
+        VALUES ('$codigo', '$descripcion', $cantidad, $numero_caja, '$ref', CURRENT_TIMESTAMP)";
 
 // Ejecutar la consulta 
 if ($conn->query($sql) === TRUE) {

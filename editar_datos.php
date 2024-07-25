@@ -16,8 +16,8 @@ if (isset($_GET['id'])) {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    // Preparar SQL para leer los datos específicos
-    $sql = "SELECT codigo_barras, des_Item, cantidad, `num-caja` FROM tiendaempaques WHERE id = $id";
+    // Preparar SQL para leer los datos específicos, incluyendo Ref
+    $sql = "SELECT codigo_barras, des_Item, cantidad, `num-caja`, Ref FROM tiendaempaques WHERE id = $id";
     $result = $conn->query($sql);
 
     // Verificar si hay resultados
@@ -74,6 +74,11 @@ if (isset($_GET['id'])) {
                 <div class="form-group">
                     <label for="numero_caja">Número de caja:</label>
                     <input type="number" id="numero_caja" name="numero_caja" value="<?php echo htmlspecialchars($row['num-caja']); ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ref">Ref:</label>
+                    <input type="text" id="ref" name="ref" value="<?php echo htmlspecialchars($row['Ref']); ?>" required>
                 </div>
 
                 <div class="button-container">

@@ -32,9 +32,11 @@ document.addEventListener("keydown", function(event) {
 
     // Buscar la descripción del producto y actualizar el campo correspondiente
     if (productos[codigoBarras]) {
-      document.getElementById("descripcion").value = productos[codigoBarras];
+      document.getElementById("descripcion").value = productos[codigoBarras].descripcion;
+      document.getElementById("ref").value = productos[codigoBarras].ref; // Asignar Ref
     } else {
       document.getElementById("descripcion").value = "Descripción no encontrada";
+      document.getElementById("ref").value = ""; // Limpiar Ref si no se encuentra el producto
     }
 
     // Mover el foco al campo de cantidad

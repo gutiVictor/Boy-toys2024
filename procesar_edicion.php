@@ -5,6 +5,7 @@ if (isset($_POST['id'])) {
     $descripcion = $_POST['descripcion'];
     $cantidad = $_POST['cantidad'];
     $numero_caja = $_POST['numero_caja'];
+    $ref = $_POST['ref']; // Agregar campo Ref
 
     // Conectarse a la base de datos desde PHP
     $servername = "localhost";
@@ -20,19 +21,31 @@ if (isset($_POST['id'])) {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    // Preparar SQL para actualizar los datos
-    $sql = "UPDATE tiendaempaques SET codigo_barras = '$codigo', des_Item = '$descripcion', cantidad = $cantidad, `num-caja` = $numero_caja WHERE id = $id";
+    // Preparar SQL para actualizar los datos usando consultas preparadas
+    $sql = "UPDATE tiendaempaques 
+            SET codigo_barras = ?, des_Item = ?, cantidad = ?, `num-caja` = ?, ref = ? 
+            WHERE id = ?";
+
+    // Preparar la consulta
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        die("Error al preparar la consulta: " . $conn->error);
+    }
+
+    // Vincular los parámetros
+    $stmt->bind_param("ssiisi", $codigo, $descripcion, $cantidad, $numero_caja, $ref, $id);
 
     // Ejecutar la consulta
-    if ($conn->query($sql) === TRUE) {
+    if ($stmt->execute()) {
         header("Location: leer_datos.php");
         exit();
     } else {
-        echo "Error al actualizar los datos: " . $conn->error;
+        echo "Error al actualizar los datos: " . $stmt->error;
     }
 
-    // Cerrar la aplicación
+    // Cerrar la conexión
+    $stmt->close();
     $conn->close();
 }
 ?>
-       

@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QMessageBox
 from openpyxl import Workbook, load_workbook
 from datetime import datetime
 
@@ -11,7 +11,7 @@ class VentanaPrincipal(QWidget):
 
     def initUI(self):
         self.setWindowTitle('Aplicación de Inventario')
-        self.setGeometry(100, 100, 400, 300)
+        self.setGeometry(100, 100, 400, 350)  # Ajustado para incluir el nuevo campo
 
         self.label_codigo = QLabel('Código de Barras:')
         self.edit_codigo = QLineEdit()
@@ -21,6 +21,9 @@ class VentanaPrincipal(QWidget):
 
         self.label_cantidad = QLabel('Cantidad:')
         self.edit_cantidad = QLineEdit()
+
+        self.label_ref = QLabel('Ref:')
+        self.edit_ref = QLineEdit()
 
         self.btn_agregar = QPushButton('Agregar')
         self.btn_agregar.clicked.connect(self.agregarProducto)
@@ -32,6 +35,8 @@ class VentanaPrincipal(QWidget):
         vbox.addWidget(self.edit_caja)
         vbox.addWidget(self.label_cantidad)
         vbox.addWidget(self.edit_cantidad)
+        vbox.addWidget(self.label_ref)
+        vbox.addWidget(self.edit_ref)
         vbox.addWidget(self.btn_agregar)
 
         self.setLayout(vbox)
@@ -40,15 +45,16 @@ class VentanaPrincipal(QWidget):
         self.archivo_excel = 'inventario.xlsx'
         self.libro_excel = Workbook()
         self.hoja_excel = self.libro_excel.active
-        self.hoja_excel.append(['Fecha', 'Código de Barras', '# de Caja', 'Cantidad'])
+        self.hoja_excel.append(['Fecha', 'Código de Barras', '# de Caja', 'Cantidad', 'Ref'])  # Añadido 'Ref'
 
     def agregarProducto(self):
         codigo = self.edit_codigo.text()
         caja = self.edit_caja.text()
         cantidad = self.edit_cantidad.text()
+        ref = self.edit_ref.text()  # Obtener el valor de Ref
         fecha = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        self.hoja_excel.append([fecha, codigo, caja, cantidad])
+        self.hoja_excel.append([fecha, codigo, caja, cantidad, ref])  # Añadido 'Ref'
         self.libro_excel.save(self.archivo_excel)
 
         QMessageBox.information(self, 'Producto agregado', 'Producto agregado al inventario.')
