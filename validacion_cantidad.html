@@ -20,6 +20,20 @@
 </head>
 <body>
     <h1>Validación de Cantidad</h1>
+    
+    <div>
+        <label for="filterBox">Caja:</label>
+        <input type="text" id="filterBox" name="filterBox">
+        
+        <label for="filterBarcode">Código de Barra:</label>
+        <input type="text" id="filterBarcode" name="filterBarcode">
+        
+        <label for="filterDate">Fecha:</label>
+        <input type="date" id="filterDate" name="filterDate">
+        
+        <button id="applyFilters">Aplicar Filtros</button>
+    </div>
+    
     <table id="consolidatedTable">
         <thead>
             <tr>
@@ -39,44 +53,65 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            let allData = [];
+
             fetch('get_consolidated_data.php')
                 .then(response => response.json())
                 .then(data => {
-                    const tableBody = document.querySelector("#consolidatedTable tbody");
-                    tableBody.innerHTML = "";
-
-                    if (data.message) {
-                        const row = document.createElement("tr");
-                        const cell = document.createElement("td");
-                        cell.colSpan = 4;
-                        cell.textContent = data.message;
-                        row.appendChild(cell);
-                        tableBody.appendChild(row);
-                    } else {
-                        data.forEach(item => {
-                            const row = document.createElement("tr");
-
-                            const boxCell = document.createElement("td");
-                            boxCell.textContent = item.box;
-                            row.appendChild(boxCell);
-
-                            const barcodeCell = document.createElement("td");
-                            barcodeCell.textContent = item.barcode;
-                            row.appendChild(barcodeCell);
-
-                            const refCell = document.createElement("td");
-                            refCell.textContent = item.ref;
-                            row.appendChild(refCell);
-
-                            const totalCell = document.createElement("td");
-                            totalCell.textContent = item.total;
-                            row.appendChild(totalCell);
-
-                            tableBody.appendChild(row);
-                        });
-                    }
+                    allData = data;
+                    renderTable(data);
                 })
                 .catch(error => console.error('Error:', error));
+
+            document.getElementById("applyFilters").addEventListener("click", function() {
+                const filterBox = document.getElementById("filterBox").value.toLowerCase();
+                const filterBarcode = document.getElementById("filterBarcode").value.toLowerCase();
+                const filterDate = document.getElementById("filterDate").value;
+
+                const filteredData = allData.filter(item => {
+                    return (filterBox === "" || item.box.toLowerCase().includes(filterBox)) &&
+                           (filterBarcode === "" || item.barcode.toLowerCase().includes(filterBarcode)) &&
+                           (filterDate === "" || new Date(item.date).toISOString().split('T')[0] === filterDate);
+                });
+
+                renderTable(filteredData);
+            });
+
+            function renderTable(data) {
+                const tableBody = document.querySelector("#consolidatedTable tbody");
+                tableBody.innerHTML = "";
+
+                if (data.length === 0) {
+                    const row = document.createElement("tr");
+                    const cell = document.createElement("td");
+                    cell.colSpan = 4;
+                    cell.textContent = "No se encontraron datos.";
+                    row.appendChild(cell);
+                    tableBody.appendChild(row);
+                } else {
+                    data.forEach(item => {
+                        const row = document.createElement("tr");
+
+                        const boxCell = document.createElement("td");
+                        boxCell.textContent = item.box;
+                        row.appendChild(boxCell);
+
+                        const barcodeCell = document.createElement("td");
+                        barcodeCell.textContent = item.barcode;
+                        row.appendChild(barcodeCell);
+
+                        const refCell = document.createElement("td");
+                        refCell.textContent = item.ref;
+                        row.appendChild(refCell);
+
+                        const totalCell = document.createElement("td");
+                        totalCell.textContent = item.total;
+                        row.appendChild(totalCell);
+
+                        tableBody.appendChild(row);
+                    });
+                }
+            }
         });
     </script>
 </body>
