@@ -16,6 +16,9 @@
             padding: 8px;
             text-align: left;
         }
+        .separator-row {
+            background-color: #f2f2f2; /* Color de fondo para las filas separadoras */
+        }
     </style>
 </head>
 <body>
@@ -27,6 +30,9 @@
         
         <label for="filterBarcode">Código de Barra:</label>
         <input type="text" id="filterBarcode" name="filterBarcode">
+        
+        <label for="filterRef">Ref:</label>
+        <input type="text" id="filterRef" name="filterRef">
         
         <label for="filterDate">Fecha:</label>
         <input type="date" id="filterDate" name="filterDate">
@@ -48,7 +54,7 @@
         </tbody>
     </table>
 
-    <!--  boton para regresar a ingreso_datos.html -->
+    <!-- Botón para regresar a ingreso_datos.html -->
     <a href="ingreso_datos.html">Regresar</a>
 
     <script>
@@ -66,11 +72,13 @@
             document.getElementById("applyFilters").addEventListener("click", function() {
                 const filterBox = document.getElementById("filterBox").value.toLowerCase();
                 const filterBarcode = document.getElementById("filterBarcode").value.toLowerCase();
+                const filterRef = document.getElementById("filterRef").value.toLowerCase();
                 const filterDate = document.getElementById("filterDate").value;
 
                 const filteredData = allData.filter(item => {
                     return (filterBox === "" || item.box.toLowerCase().includes(filterBox)) &&
                            (filterBarcode === "" || item.barcode.toLowerCase().includes(filterBarcode)) &&
+                           (filterRef === "" || item.ref.toLowerCase().includes(filterRef)) &&
                            (filterDate === "" || new Date(item.date).toISOString().split('T')[0] === filterDate);
                 });
 
@@ -89,7 +97,25 @@
                     row.appendChild(cell);
                     tableBody.appendChild(row);
                 } else {
+                    let currentBox = null;
+
                     data.forEach(item => {
+                        // Insertar una fila separadora si el número de caja cambia
+                        if (item.box !== currentBox) {
+                            if (currentBox !== null) {
+                                // Solo insertar fila separadora si ya hemos procesado al menos una caja
+                                const separatorRow = document.createElement("tr");
+                                separatorRow.classList.add("separator-row");
+                                const separatorCell = document.createElement("td");
+                                separatorCell.colSpan = 4;
+                                separatorCell.textContent = ""; // Espacio vacío
+                                separatorRow.appendChild(separatorCell);
+                                tableBody.appendChild(separatorRow);
+                            }
+                            currentBox = item.box;
+                        }
+
+                        // Crear la fila de datos
                         const row = document.createElement("tr");
 
                         const boxCell = document.createElement("td");
