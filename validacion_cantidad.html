@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="LOGO-BOY-TOYS.png" type="image/png">
     <title>Validación de Cantidad</title>
     <style>
         table {
@@ -24,22 +25,33 @@
 </head>
 <body>
     <h1>Validación de Cantidad</h1>
+     <!-- Botón para regresar a ingreso_datos.html -->
+     <a href="ingreso_datos.html">Regresar</a>
+     <br>
+     <br>
     
+
+     <!-- Botón para aplicar filtros -->
     <div>
-        <label for="filterBox">Caja:</label>
-        <input type="text" id="filterBox" name="filterBox">
+        
         
         <label for="filterBarcode">Código de Barra:</label>
         <input type="text" id="filterBarcode" name="filterBarcode">
         
         <label for="filterRef">Ref:</label>
         <input type="text" id="filterRef" name="filterRef">
+
+        <label for="filterBox">#Caja:</label>
+        <input type="text" id="filterBox" name="filterBox">
         
         <label for="filterDate">Fecha:</label>
         <input type="date" id="filterDate" name="filterDate">
         
         <button id="applyFilters">Aplicar Filtros</button>
     </div>
+
+    <br>
+    <br>
     
     <table id="consolidatedTable">
         <thead>
@@ -47,8 +59,8 @@
                 <th>Código de Barra</th>
                 <th>Ref</th>
                 <th>Descripción del Ítem</th>
-                <th>Total</th>
-                <th>Caja</th>
+                <th>Cantidad</th>
+                <th>#Caja</th>
             </tr>
         </thead>
         <tbody>
@@ -56,8 +68,7 @@
         </tbody>
     </table>
 
-    <!-- Botón para regresar a ingreso_datos.html -->
-    <a href="ingreso_datos.html">Regresar</a>
+   
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
