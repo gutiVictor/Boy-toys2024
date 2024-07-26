@@ -3,23 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylevalidacion_cantidad.css">
-    <title>Entrada</title>
+    <title>Validación de Cantidad</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <div class="main">
-        <div class="header">
-            <img src="LOGO-BOY-TOYS.png" alt="Boytoys">
-        </div>
-        <h1>Hola soy Validacion</h1>
-    </div>
+    <h1>Validación de Cantidad</h1>
+    <table id="consolidatedTable">
+        <thead>
+            <tr>
+                <th>Caja</th>
+                <th>Código de Barra</th>
+                <th>Ref</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se insertarán las filas con los datos -->
+        </tbody>
+    </table>
 
-    <button onclick="navigateTo('index.html')">Return Menu</button>
+    <!--  boton para regresar a ingreso_datos.html -->
+    <a href="ingreso_datos.html">Regresar</a>
 
     <script>
-        function navigateTo(page) {
-            window.location.href = page;
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('get_consolidated_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector("#consolidatedTable tbody");
+                    tableBody.innerHTML = "";
+
+                    if (data.message) {
+                        const row = document.createElement("tr");
+                        const cell = document.createElement("td");
+                        cell.colSpan = 4;
+                        cell.textContent = data.message;
+                        row.appendChild(cell);
+                        tableBody.appendChild(row);
+                    } else {
+                        data.forEach(item => {
+                            const row = document.createElement("tr");
+
+                            const boxCell = document.createElement("td");
+                            boxCell.textContent = item.box;
+                            row.appendChild(boxCell);
+
+                            const barcodeCell = document.createElement("td");
+                            barcodeCell.textContent = item.barcode;
+                            row.appendChild(barcodeCell);
+
+                            const refCell = document.createElement("td");
+                            refCell.textContent = item.ref;
+                            row.appendChild(refCell);
+
+                            const totalCell = document.createElement("td");
+                            totalCell.textContent = item.total;
+                            row.appendChild(totalCell);
+
+                            tableBody.appendChild(row);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
 </html>

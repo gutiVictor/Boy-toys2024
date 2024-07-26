@@ -27,11 +27,18 @@ body {
     width: 150px;
     height: auto;
 }
+.header2 img {
+    display: block;
+    margin: 0 auto 20px auto; /*  imagen  */
+    width: 450px;
+    height: auto;
+}
 
-h1 {
+h1{
     color: #007bff; /* Color azul para el título principal */
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    padding-top: 200px;
 }
 
 p {
@@ -82,3 +89,10 @@ button:hover {
     background-color: #0056b3; /* Fondo azul oscuro al pasar el ratón */
     transform: scale(1.05); /* Aumentar tamaño al pasar el ratón */
 }
+
+
+
+
+    
+
+
