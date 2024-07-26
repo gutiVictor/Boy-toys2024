@@ -18,7 +18,9 @@ $barcode = isset($_GET['barcode']) ? $_GET['barcode'] : '';
 $date = isset($_GET['date']) ? $_GET['date'] : '';
 
 // Construir la consulta SQL con filtros
-$sql = "SELECT `num-caja` AS box, codigo_barras AS barcode, Ref AS ref, SUM(cantidad) AS total FROM tiendaempaques WHERE 1=1";
+$sql = "SELECT `num-caja` AS box, codigo_barras AS barcode, Ref AS ref, des_Item AS des_Item, SUM(cantidad) AS total 
+        FROM tiendaempaques 
+        WHERE 1=1";
 
 if (!empty($box)) {
     $sql .= " AND `num-caja` LIKE '%" . $conn->real_escape_string($box) . "%'";
@@ -30,7 +32,7 @@ if (!empty($date)) {
     $sql .= " AND DATE(fecha) = '" . $conn->real_escape_string($date) . "'";
 }
 
-$sql .= " GROUP BY `num-caja`, codigo_barras, Ref";
+$sql .= " GROUP BY `num-caja`, codigo_barras, Ref, des_Item"; // Incluir des_Item en GROUP BY
 
 $result = $conn->query($sql);
 

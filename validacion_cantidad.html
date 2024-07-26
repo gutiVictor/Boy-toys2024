@@ -16,8 +16,9 @@
             padding: 8px;
             text-align: left;
         }
-        .separator-row {
-            background-color: #f2f2f2; /* Color de fondo para las filas separadoras */
+        .separator {
+            background-color: #f0f0f0;
+            height: 10px;
         }
     </style>
 </head>
@@ -43,10 +44,11 @@
     <table id="consolidatedTable">
         <thead>
             <tr>
-                <th>Caja</th>
                 <th>Código de Barra</th>
                 <th>Ref</th>
+                <th>Descripción del Ítem</th>
                 <th>Total</th>
+                <th>Caja</th>
             </tr>
         </thead>
         <tbody>
@@ -89,53 +91,52 @@
                 const tableBody = document.querySelector("#consolidatedTable tbody");
                 tableBody.innerHTML = "";
 
+                let lastBox = null;
+                data.forEach(item => {
+                    // Check if a new separator is needed
+                    if (lastBox && lastBox !== item.box) {
+                        const separatorRow = document.createElement("tr");
+                        const separatorCell = document.createElement("td");
+                        separatorCell.colSpan = 5;
+                        separatorCell.className = "separator";
+                        separatorRow.appendChild(separatorCell);
+                        tableBody.appendChild(separatorRow);
+                    }
+
+                    const row = document.createElement("tr");
+
+                    const barcodeCell = document.createElement("td");
+                    barcodeCell.textContent = item.barcode;
+                    row.appendChild(barcodeCell);
+
+                    const refCell = document.createElement("td");
+                    refCell.textContent = item.ref;
+                    row.appendChild(refCell);
+
+                    const desItemCell = document.createElement("td");
+                    desItemCell.textContent = item.des_Item;
+                    row.appendChild(desItemCell);
+
+                    const totalCell = document.createElement("td");
+                    totalCell.textContent = item.total;
+                    row.appendChild(totalCell);
+
+                    const boxCell = document.createElement("td");
+                    boxCell.textContent = item.box;
+                    row.appendChild(boxCell);
+
+                    tableBody.appendChild(row);
+
+                    lastBox = item.box;
+                });
+
                 if (data.length === 0) {
                     const row = document.createElement("tr");
                     const cell = document.createElement("td");
-                    cell.colSpan = 4;
+                    cell.colSpan = 5;
                     cell.textContent = "No se encontraron datos.";
                     row.appendChild(cell);
                     tableBody.appendChild(row);
-                } else {
-                    let currentBox = null;
-
-                    data.forEach(item => {
-                        // Insertar una fila separadora si el número de caja cambia
-                        if (item.box !== currentBox) {
-                            if (currentBox !== null) {
-                                // Solo insertar fila separadora si ya hemos procesado al menos una caja
-                                const separatorRow = document.createElement("tr");
-                                separatorRow.classList.add("separator-row");
-                                const separatorCell = document.createElement("td");
-                                separatorCell.colSpan = 4;
-                                separatorCell.textContent = ""; // Espacio vacío
-                                separatorRow.appendChild(separatorCell);
-                                tableBody.appendChild(separatorRow);
-                            }
-                            currentBox = item.box;
-                        }
-
-                        // Crear la fila de datos
-                        const row = document.createElement("tr");
-
-                        const boxCell = document.createElement("td");
-                        boxCell.textContent = item.box;
-                        row.appendChild(boxCell);
-
-                        const barcodeCell = document.createElement("td");
-                        barcodeCell.textContent = item.barcode;
-                        row.appendChild(barcodeCell);
-
-                        const refCell = document.createElement("td");
-                        refCell.textContent = item.ref;
-                        row.appendChild(refCell);
-
-                        const totalCell = document.createElement("td");
-                        totalCell.textContent = item.total;
-                        row.appendChild(totalCell);
-
-                        tableBody.appendChild(row);
-                    });
                 }
             }
         });
