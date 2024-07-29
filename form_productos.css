@@ -65,6 +65,18 @@ button[type="submit"]:hover {
     background-color: #9e7cfc;
 }
 
+button[type="button"] {
+    background-color: #BB86FC;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 ul {
     list-style-type: none; /* Quitar viñetas */
     padding: 0;

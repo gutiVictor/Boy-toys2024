@@ -23,27 +23,22 @@
         <br><br>
         
         <button type="submit" name="action" value="add">Guardar</button>
-
-        
-        
+        <button type="button" onclick="location.href='index.html'">Volver a Inicio</button>
     </form>
-
-    
 
     <h2>Lista de Productos</h2>
     <ul id="productList">
-    <?php
-    $productos = json_decode(file_get_contents('productos.json'), true);
-    foreach ($productos as $codigo => $producto) {
-        echo "<li>";
-        echo "Código: $codigo, Descripción: {$producto['descripcion']}, Referencia: {$producto['ref']}";
-        echo " <a class='edit' href='form_productos.php?action=edit&codigo=$codigo'>Editar</a>";
-        /* echo " <a href='manage_productos.php?action=delete&codigo=$codigo'>Eliminar</a>"; */
-        echo "</li>";
-    }
-    ?>
-</ul>
-
+        <?php
+        $productos = json_decode(file_get_contents('productos.json'), true);
+        foreach ($productos as $codigo => $producto) {
+            echo "<li>";
+            echo "Código: $codigo, Descripción: {$producto['descripcion']}, Referencia: {$producto['ref']}";
+            echo " <a class='edit' href='form_productos.php?action=edit&codigo=$codigo'>Editar</a>";
+            /* echo " <a href='manage_productos.php?action=delete&codigo=$codigo'>Eliminar</a>"; */
+            echo "</li>";
+        }
+        ?>
+    </ul>
 
     <?php
     if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['codigo'])) {
