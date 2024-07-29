@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="form_productos.css">
 </head>
 <body>
-    <h1>Gestión de Productos</h1>
+    <h1>Agregar Codigo/<br>Descripcion/<br>Referencia</h1>
     <!-- Formulario para agregar o editar un producto -->
     <form id="productForm" method="POST" action="manage_productos.php">
         <label for="codigo">Código:</label>
@@ -23,7 +23,12 @@
         <br><br>
         
         <button type="submit" name="action" value="add">Guardar</button>
+
+        
+        
     </form>
+
+    
 
     <h2>Lista de Productos</h2>
     <ul id="productList">
