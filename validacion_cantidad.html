@@ -6,6 +6,7 @@
     <link rel="icon" href="LOGO-BOY-TOYS.png" type="image/png">
     <title>Validación de Cantidad</title>
     <style>
+        /* Estilos para la tabla */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -29,27 +30,34 @@
     <a href="ingreso_datos.html">Regresar</a>
     <br><br>
     
-    <!-- Botón para aplicar filtros -->
+    <!-- Formulario de filtros -->
     <div>
+        <!-- Filtro de código de barra -->
         <label for="filterBarcode">Código de Barra:</label>
         <input type="text" id="filterBarcode" name="filterBarcode">
         
+        <!-- Filtro de referencia -->
         <label for="filterRef">Ref:</label>
         <input type="text" id="filterRef" name="filterRef">
 
+        <!-- Filtro de número de caja -->
         <label for="filterBox">#Caja:</label>
         <input type="text" id="filterBox" name="filterBox">
 
+        <!-- Filtro de fecha de inicio -->
         <label for="fecha_inicio">Fecha Inicio:</label>
         <input type="date" id="fecha_inicio" name="fecha_inicio">
 
+        <!-- Filtro de fecha de fin -->
         <label for="fecha_fin">Fecha Fin:</label>
         <input type="date" id="fecha_fin" name="fecha_fin">
 
+        <!-- Botón para aplicar los filtros -->
         <button id="applyFilters">Aplicar Filtros</button>
     </div>
     <br><br>
     
+    <!-- Tabla para mostrar los datos consolidados -->
     <table id="consolidatedTable">
         <thead>
             <tr>
@@ -67,7 +75,30 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Función para obtener la fecha en formato YYYY-MM-DD
+            function getFormattedDate(date) {
+                const d = new Date(date);
+                let month = '' + (d.getMonth() + 1);
+                let day = '' + d.getDate();
+                const year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [year, month, day].join('-');
+            }
+
+            // Obtener la fecha de hoy y la fecha de hace dos días
+            const today = new Date();
+            const twoDaysAgo = new Date(today);
+            twoDaysAgo.setDate(today.getDate() - 2);
+
+            // Asignar fechas por defecto a los campos de fecha
+            document.getElementById('fecha_inicio').value = getFormattedDate(twoDaysAgo);
+            document.getElementById('fecha_fin').value = getFormattedDate(today);
+
             function fetchData() {
+                // Obtener los valores de los filtros
                 const filterBox = document.getElementById("filterBox").value;
                 const filterBarcode = document.getElementById("filterBarcode").value;
                 const filterRef = document.getElementById("filterRef").value;
@@ -83,26 +114,28 @@
                     fecha_fin: fechaFin || ''
                 }).toString();
 
+                // Hacer una solicitud GET a get_consolidated_data.php con los filtros aplicados
                 fetch('get_consolidated_data.php?' + queryParams)
-                    .then(response => response.json())
+                    .then(response => response.json())  // Parsear la respuesta JSON
                     .then(data => {
-                        renderTable(data);
+                        renderTable(data);  // Renderizar la tabla con los datos obtenidos
                     })
-                    .catch(error => console.error('Error:', error));
+                    .catch(error => console.error('Error:', error));  // Manejar errores
             }
 
-            // Llamar a fetchData para cargar todos los datos por defecto al inicio
+            // Llamar a fetchData para cargar los datos de los últimos dos días por defecto al inicio
             fetchData();
 
+            // Agregar un evento al botón de aplicar filtros
             document.getElementById("applyFilters").addEventListener("click", fetchData);
 
             function renderTable(data) {
                 const tableBody = document.querySelector("#consolidatedTable tbody");
-                tableBody.innerHTML = "";
+                tableBody.innerHTML = "";  // Limpiar el contenido previo de la tabla
 
                 let lastBox = null;
                 data.forEach(item => {
-                    // Check if a new separator is needed
+                    // Agregar un separador si el número de caja cambia
                     if (lastBox && lastBox !== item.box) {
                         const separatorRow = document.createElement("tr");
                         const separatorCell = document.createElement("td");
@@ -112,6 +145,7 @@
                         tableBody.appendChild(separatorRow);
                     }
 
+                    // Crear una nueva fila con los datos del ítem
                     const row = document.createElement("tr");
 
                     const barcodeCell = document.createElement("td");
@@ -139,6 +173,7 @@
                     lastBox = item.box;
                 });
 
+                // Mostrar un mensaje si no se encuentran datos
                 if (data.length === 0) {
                     const row = document.createElement("tr");
                     const cell = document.createElement("td");
