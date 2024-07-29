@@ -15,21 +15,30 @@ if ($conn->connect_error) {
 // Obtener parámetros de filtro
 $box = isset($_GET['box']) ? $_GET['box'] : '';
 $barcode = isset($_GET['barcode']) ? $_GET['barcode'] : '';
-$date = isset($_GET['date']) ? $_GET['date'] : '';
+$ref = isset($_GET['ref']) ? $_GET['ref'] : '';
+$fecha_inicio = isset($_GET['fecha_inicio']) ? $_GET['fecha_inicio'] : '';
+$fecha_fin = isset($_GET['fecha_fin']) ? $_GET['fecha_fin'] : '';
 
 // Construir la consulta SQL con filtros
 $sql = "SELECT `num-caja` AS box, codigo_barras AS barcode, Ref AS ref, des_Item AS des_Item, SUM(cantidad) AS total 
-        FROM tiendaempaques 
-        WHERE 1=1";
+        FROM tiendaempaques";
 
+$conditions = [];
 if (!empty($box)) {
-    $sql .= " AND `num-caja` LIKE '%" . $conn->real_escape_string($box) . "%'";
+    $conditions[] = "`num-caja` LIKE '%" . $conn->real_escape_string($box) . "%'";
 }
 if (!empty($barcode)) {
-    $sql .= " AND codigo_barras LIKE '%" . $conn->real_escape_string($barcode) . "%'";
+    $conditions[] = "codigo_barras LIKE '%" . $conn->real_escape_string($barcode) . "%'";
 }
-if (!empty($date)) {
-    $sql .= " AND DATE(fecha) = '" . $conn->real_escape_string($date) . "'";
+if (!empty($ref)) {
+    $conditions[] = "Ref LIKE '%" . $conn->real_escape_string($ref) . "%'";
+}
+if (!empty($fecha_inicio) && !empty($fecha_fin)) {
+    $conditions[] = "fecha_registro BETWEEN '" . $conn->real_escape_string($fecha_inicio) . " 00:00:00' AND '" . $conn->real_escape_string($fecha_fin) . " 23:59:59'";
+}
+
+if (count($conditions) > 0) {
+    $sql .= " WHERE " . implode(' AND ', $conditions);
 }
 
 $sql .= " GROUP BY `num-caja`, codigo_barras, Ref, des_Item"; // Incluir des_Item en GROUP BY

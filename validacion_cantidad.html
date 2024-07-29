@@ -25,16 +25,12 @@
 </head>
 <body>
     <h1>Validación de Cantidad</h1>
-     <!-- Botón para regresar a ingreso_datos.html -->
-     <a href="ingreso_datos.html">Regresar</a>
-     <br>
-     <br>
+    <!-- Botón para regresar a ingreso_datos.html -->
+    <a href="ingreso_datos.html">Regresar</a>
+    <br><br>
     
-
-     <!-- Botón para aplicar filtros -->
+    <!-- Botón para aplicar filtros -->
     <div>
-        
-        
         <label for="filterBarcode">Código de Barra:</label>
         <input type="text" id="filterBarcode" name="filterBarcode">
         
@@ -43,15 +39,16 @@
 
         <label for="filterBox">#Caja:</label>
         <input type="text" id="filterBox" name="filterBox">
-        
-        <label for="filterDate">Fecha:</label>
-        <input type="date" id="filterDate" name="filterDate">
-        
+
+        <label for="fecha_inicio">Fecha Inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio">
+
+        <label for="fecha_fin">Fecha Fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin">
+
         <button id="applyFilters">Aplicar Filtros</button>
     </div>
-
-    <br>
-    <br>
+    <br><br>
     
     <table id="consolidatedTable">
         <thead>
@@ -68,35 +65,36 @@
         </tbody>
     </table>
 
-   
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let allData = [];
+            function fetchData() {
+                const filterBox = document.getElementById("filterBox").value;
+                const filterBarcode = document.getElementById("filterBarcode").value;
+                const filterRef = document.getElementById("filterRef").value;
+                const fechaInicio = document.getElementById("fecha_inicio").value;
+                const fechaFin = document.getElementById("fecha_fin").value;
 
-            fetch('get_consolidated_data.php')
-                .then(response => response.json())
-                .then(data => {
-                    allData = data;
-                    renderTable(data);
-                })
-                .catch(error => console.error('Error:', error));
+                // Construir la URL con los parámetros de filtro
+                const queryParams = new URLSearchParams({
+                    box: filterBox || '',
+                    barcode: filterBarcode || '',
+                    ref: filterRef || '',
+                    fecha_inicio: fechaInicio || '',
+                    fecha_fin: fechaFin || ''
+                }).toString();
 
-            document.getElementById("applyFilters").addEventListener("click", function() {
-                const filterBox = document.getElementById("filterBox").value.toLowerCase();
-                const filterBarcode = document.getElementById("filterBarcode").value.toLowerCase();
-                const filterRef = document.getElementById("filterRef").value.toLowerCase();
-                const filterDate = document.getElementById("filterDate").value;
+                fetch('get_consolidated_data.php?' + queryParams)
+                    .then(response => response.json())
+                    .then(data => {
+                        renderTable(data);
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
 
-                const filteredData = allData.filter(item => {
-                    return (filterBox === "" || item.box.toLowerCase().includes(filterBox)) &&
-                           (filterBarcode === "" || item.barcode.toLowerCase().includes(filterBarcode)) &&
-                           (filterRef === "" || item.ref.toLowerCase().includes(filterRef)) &&
-                           (filterDate === "" || new Date(item.date).toISOString().split('T')[0] === filterDate);
-                });
+            // Llamar a fetchData para cargar todos los datos por defecto al inicio
+            fetchData();
 
-                renderTable(filteredData);
-            });
+            document.getElementById("applyFilters").addEventListener("click", fetchData);
 
             function renderTable(data) {
                 const tableBody = document.querySelector("#consolidatedTable tbody");

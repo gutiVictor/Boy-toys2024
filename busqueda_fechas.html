@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Buscar por Fechas</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Filtrar Datos por Fecha</h1>
+        <form method="GET" action="filtrar_datos.php">
+            <label for="fecha_inicio">Fecha Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+
+            <label for="fecha_fin">Fecha Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required>
+
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+</body>
+</html>
