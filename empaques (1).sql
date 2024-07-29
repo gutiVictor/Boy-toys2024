@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2024 a las 21:46:54
+-- Tiempo de generación: 29-07-2024 a las 14:17:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,40 +33,34 @@ CREATE TABLE `tiendaempaques` (
   `des_Item` varchar(255) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `num-caja` int(11) NOT NULL,
-  `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Ref` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tiendaempaques`
 --
 
-INSERT INTO `tiendaempaques` (`id`, `codigo_barras`, `des_Item`, `cantidad`, `num-caja`, `fecha_registro`) VALUES
-(1, '7760166', 'MUÑECA CON PAREJA EN PLAYA ARTICULADOS', 1, 2, '2024-07-24 15:28:08'),
-(2, '7760190', 'MUÑECA CON ACCESORIOS TOCADOR Y CLOSET', 1, 3, '2024-07-24 15:28:52'),
-(3, '7045671', 'PLAY-DOH FÁBRICA DE DIVERSIÓN SET DE INICIO', 1, 2, '2024-07-24 15:29:24'),
-(4, '7045025', 'LAT HW MONSTER TRUCKS GLOW IN THE DARK', 1, 3, '2024-07-24 15:29:39'),
-(5, '7461567', 'PELUCHE OSO 30 CMS VESTIDO', 1, 3, '2024-07-24 15:29:54'),
-(6, '7710139', 'PARLANTE BLUETOOTH', 1, 2, '2024-07-24 15:30:12'),
-(7, '7011423', 'SET POCILLOS X2 BX60', 1, 2, '2024-07-24 15:31:38'),
-(8, '7011410', 'CANGURO RIÑORERA BX30', 1, 3, '2024-07-24 15:32:07'),
-(9, '7011419', 'ESPEJO CON LUZ BX20', 1, 3, '2024-07-24 15:32:19'),
-(10, '7011424', 'PAPEL PARA AIR FRYER ANTIADERHENTE X50 BX80', 1, 4, '2024-07-24 15:32:36'),
-(11, '7191618', 'GLOBO FOIL 16', 1, 4, '2024-07-24 15:41:45'),
-(12, '7011433', 'SET DE TARROS X 2 PCS BX12', 1, 4, '2024-07-24 16:32:35'),
-(13, '7011428', 'BANDEJA METALIZADA BX320', 1, 2, '2024-07-24 16:49:05'),
-(14, '7011413', 'MALETA 4 SERVICIOS DIS OSO BX100', 6, 5, '2024-07-24 16:49:54'),
-(15, '7011413', 'MALETA 4 SERVICIOS DIS OSO BX100', 6, 5, '2024-07-24 16:50:28'),
-(16, '7011413', 'MALETA 4 SERVICIOS DIS OSO BX100', 22, 2, '2024-07-24 16:57:15'),
-(17, '1213141516', 'Descripción no encontrada', 1, 2, '2024-07-24 16:58:44'),
-(18, '7011410', 'CANGURO RIÑORERA BX30', 12, 23, '2024-07-24 16:59:24'),
-(19, '7011416', 'ESPEJO CON LUZ Y CABLE USB BX100', 1, 6, '2024-07-24 17:00:38'),
-(20, '7011419', 'ESPEJO CON LUZ BX20', 1, 3, '2024-07-24 17:09:36'),
-(21, '7011417', 'ESPEJO CON PORTARRETRATO Y CABBX36', 1, 5, '2024-07-24 18:40:52'),
-(22, '7011413', 'MALETA 4 SERVICIOS DIS OSO BX100', 77, 1, '2024-07-24 19:06:48'),
-(23, '7011410', 'CANGURO RIÑORERA BX30', 2, 2, '2024-07-24 19:35:44'),
-(24, '11222', 'Descripción no encontrada', 1, 1, '2024-07-24 19:38:53'),
-(25, '7760184', 'MUÑECA SIRENA DELFIN ACCESORIOS SURTIDO', 1, 76, '2024-07-24 19:40:05'),
-(26, '7760180', 'MUÑECA CON TRENZA LARGA SURTIDO', 2, 2, '2024-07-24 19:44:25');
+INSERT INTO `tiendaempaques` (`id`, `codigo_barras`, `des_Item`, `cantidad`, `num-caja`, `fecha_registro`, `Ref`) VALUES
+(1, '3', '3', 1, 3, '2024-07-25 16:02:47', '3'),
+(2, '7770023', 'DEF5678', 2, 2, '2024-07-25 16:03:58', 'REF003'),
+(3, '7770023', 'DEF5678', 1, 1, '2024-07-25 16:13:12', 'REF003'),
+(4, '7770022', 'ABC1234', 1, 3, '2024-07-25 16:22:32', 'REF002'),
+(5, '7770022', 'ABC1234', 1, 5, '2024-07-25 16:27:07', 'REF002'),
+(6, '121321', 'CAMIONETA', 1, 8, '2024-07-25 16:28:39', 'VVVV'),
+(7, '121321', 'Descripción no encontrada', 2, 2, '2024-07-25 16:32:23', 'REF003'),
+(8, '7770022', 'ABC1234', 1, 9, '2024-07-25 16:33:40', 'REF002'),
+(9, '7770021', 'carros de supermercado', 1, 8, '2024-07-25 16:36:05', 'REF001'),
+(10, '7770022', 'muñecos leon', 1, 4, '2024-07-25 16:36:15', 'REF002'),
+(11, '7770023', 'Biciclestas', 1, 2, '2024-07-25 16:36:24', 'REF003'),
+(12, '7770023', 'trenes', 6, 1, '2024-07-26 15:22:31', 'REF003'),
+(13, '121321', 'Descripción no encontrada', 6, 2, '2024-07-26 15:27:32', '12'),
+(14, '121321', '123', 2, 2, '2024-07-26 15:30:01', 'tiywet'),
+(15, '7770023', 'trenes', 1, 2, '2024-07-26 15:31:47', 'REF003'),
+(16, 'REF003', 'Descripción no encontrada', 1, 1, '2024-07-26 20:12:25', 'undefined'),
+(17, '7770023', 'trenes 2', 2, 1, '2024-07-26 20:13:00', 'REF003'),
+(18, '77777', '007 ', 1, 7, '2024-07-26 21:49:12', 'golden '),
+(19, '7770022', 'muñecos leon', 1, 10, '2024-07-26 21:55:02', 'REF002');
 
 --
 -- Índices para tablas volcadas
@@ -86,7 +80,7 @@ ALTER TABLE `tiendaempaques`
 -- AUTO_INCREMENT de la tabla `tiendaempaques`
 --
 ALTER TABLE `tiendaempaques`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
