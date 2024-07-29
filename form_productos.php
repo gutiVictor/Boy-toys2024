@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Productos</title>
+    <link rel="icon" href="LOGO-BOY-TOYS.png" type="image/png">
+    <link rel="stylesheet" href="form_productos.css">
 </head>
 <body>
     <h1>Gestión de Productos</h1>
@@ -25,17 +27,18 @@
 
     <h2>Lista de Productos</h2>
     <ul id="productList">
-        <?php
-        $productos = json_decode(file_get_contents('productos.json'), true);
-        foreach ($productos as $codigo => $producto) {
-            echo "<li>";
-            echo "Código: $codigo, Descripción: {$producto['descripcion']}, Referencia: {$producto['ref']}";
-            echo " <a href='form_productos.php?action=edit&codigo=$codigo'>Editar</a>";
-            echo " <a href='manage_productos.php?action=delete&codigo=$codigo'>Eliminar</a>";
-            echo "</li>";
-        }
-        ?>
-    </ul>
+    <?php
+    $productos = json_decode(file_get_contents('productos.json'), true);
+    foreach ($productos as $codigo => $producto) {
+        echo "<li>";
+        echo "Código: $codigo, Descripción: {$producto['descripcion']}, Referencia: {$producto['ref']}";
+        echo " <a class='edit' href='form_productos.php?action=edit&codigo=$codigo'>Editar</a>";
+        /* echo " <a href='manage_productos.php?action=delete&codigo=$codigo'>Eliminar</a>"; */
+        echo "</li>";
+    }
+    ?>
+</ul>
+
 
     <?php
     if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['codigo'])) {

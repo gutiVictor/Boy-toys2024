@@ -22,5 +22,45 @@
     "630208123214": {
         "descripcion": "posilloloco",
         "ref": "RE098912234556"
+    },
+    "7770021897898888": {
+        "descripcion": "carros de tres",
+        "ref": "REF001"
+    },
+    "7770026": {
+        "descripcion": "Para sol",
+        "ref": "REF008"
+    },
+    "77700435": {
+        "descripcion": "Tarro pintura",
+        "ref": "REF0987"
+    },
+    "77700498": {
+        "descripcion": "Tarro pintura",
+        "ref": "REF0988"
+    },
+    "7770029": {
+        "descripcion": "caritas",
+        "ref": "REF013"
+    },
+    "7770044": {
+        "descripcion": "caritas largas cortas",
+        "ref": "REF952"
+    },
+    "77601844": {
+        "descripcion": "escobas",
+        "ref": "REF333"
+    },
+    "776018444": {
+        "descripcion": "escobaseer",
+        "ref": "REF33344"
+    },
+    "7770044111": {
+        "descripcion": "caritas largas cortas comic",
+        "ref": "REF9527890"
+    },
+    "7770": {
+        "descripcion": "carros de tres",
+        "ref": "REF001"
     }
 }
