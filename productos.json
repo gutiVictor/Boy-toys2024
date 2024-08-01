@@ -13644,11 +13644,11 @@
            "descripcion":"BUGGY BUGGY NIÑA                        ",
            "ref":"CPF945-2"
         },
-        "7761":{
+        "7761D":{
            "descripcion":"CUATRIMOTO NIÑO",
            "ref":"CPF947-1"
         },
-        "7762":{
+        "7762D":{
            "descripcion":"CUATRIMOTO NIÑA",
            "ref":"CPF947-2"
         },
@@ -29411,10 +29411,13 @@
            "descripcion":"FIGURA ANGEL PEQUEÑO",
            "ref":"DIO1227"
         },
-        "7021228":{
-           "descripcion":"INDIVIDUALES Y 	PORTA VASO X 12 PCS",
-           "ref":"DIO1228"
-        },
+        
+         "7021228": {
+           "descripcion": "INDIVIDUALES Y PORTA VASO X 12 PCS",
+           "ref": "DIO1228"
+         },
+       
+       
         "7021229":{
            "descripcion":"CAJA PARA LLAVES",
            "ref":"DIO1229"
@@ -29495,10 +29498,13 @@
            "descripcion":"DECORACION ELEFANTE",
            "ref":"DIO1248"
         },
-        "7021249":{
-           "descripcion":"CAJA DE REGALO	DECORADA X 3 PCS",
-           "ref":"DIO1249"
-        },
+        
+         "7021249": {
+           "descripcion": "CAJA DE REGALO\\tDECORADA X 3 PCS",
+           "ref": "DIO1249"
+         },
+       
+       
         "7021250":{
            "descripcion":"CAJA DE REGALO DECORADA",
            "ref":"DIO1250"
@@ -32325,10 +32331,13 @@
            "descripcion":"CARROS DE COLECCION",
            "ref":"DIO1942"
         },
-        "7021943":{
-           "descripcion":"SET DE RESCATE	BOMBEROS",
-           "ref":"DIO1943"
-        },
+        
+         "7021943": {
+           "descripcion": "SET DE RESCATE\\tBOMBEROS",
+           "ref": "DIO1943"
+         },
+       
+       
         "7021944":{
            "descripcion":"GUITARRA MUSICAL EN BOLSA",
            "ref":"DIO1944"
@@ -32447,9 +32456,12 @@
        
        
         },
-        "7021972":{
-           "descripcion":"CABALLO CON	RUEDAS",
-           "ref":"DIO1972"
+        
+         "7021972": {
+           "descripcion": "CABALLO CON\\tRUEDAS",
+           "ref": "DIO1972"
+       
+       
         },
         "7021973":{
            "descripcion":"CARRO METALICO DISEÑO ANIMALES",
@@ -32653,9 +32665,11 @@
          },
       
        
-        "7022022":{
-           "descripcion":"PORTARETRATO	13 X 18 CM",
-           "ref":"DIO2022"
+         
+            "7022022": {
+              "descripcion": "PORTARETRATO\\t13 X 18 CM",
+              "ref": "DIO2022"
+           
         },
         "7022023":{
            "descripcion":"LONCHERA DECORADA",
@@ -32916,9 +32930,12 @@
         "descripcion":"LANZA AGUA",
         "ref":"DIO2086"
      },
-     "7022087":{
-        "descripcion":"MUÑECA PRETTY	GIRL HADA",
-        "ref":"DIO2087"
+     
+      "7022087": {
+        "descripcion": "MUÑECA PRETTY\\tGIRL HADA",
+        "ref": "DIO2087"
+      
+    
      },
      "7022088":{
         "descripcion":"CARROS COLECCION",
@@ -32956,10 +32973,13 @@
         "descripcion":"PORTA VASOS 4 PCS",
         "ref":"DIO2096"
      },
-     "7022097":{
-        "descripcion":"PORTA	VASOS 4 PCS",
-        "ref":"DIO2097"
-     },
+     
+      "7022097": {
+        "descripcion": "PORTA\\tVASOS 4 PCS",
+        "ref": "DIO2097"
+      },
+    
+    
      "7022098":{
         "descripcion":"BURBUJERO FIGURA",
         "ref":"DIO2098"
@@ -33091,9 +33111,12 @@
         "descripcion":"SET LONCHERA",
         "ref":"DIO2129"
      },
-     "7022130":{
-        "descripcion":"PORTALAPICERO	FIG PELUCHE",
-        "ref":"DIO2130"
+     
+      "7022130": {
+        "descripcion": "PORTALAPICERO\\tFIG PELUCHE",
+        "ref": "DIO2130"
+   
+    
      },
      "7022131":{
         "descripcion":"CARRO EN BOLSA",
@@ -33202,9 +33225,12 @@
         "descripcion":"GANCHO SELLADOR 5 PCS",
         "ref":"DIO2156"
      },
-     "7022157":{
-        "descripcion":"JUEGO DE ARCO	Y FLECHA EN BOLSA",
-        "ref":"DIO2157"
+     
+      "7022157": {
+        "descripcion": "JUEGO DE ARCO\\tY FLECHA EN BOLSA",
+        "ref": "DIO2157"
+    
+    
      },
      "7022158":{
         "descripcion":"BURBUJERO FIG CUBIERTO",
@@ -33281,9 +33307,12 @@
       
     },
     
-     "7022176":{
-        "descripcion":"PORTARETRATO	DECORADO",
-        "ref":"DIO2176"
+    
+      "7022176": {
+        "descripcion": "PORTARETRATO\\tDECORADO",
+        "ref": "DIO2176"
+     
+    
      },
      "7022177":{
         "descripcion":"MUG DECORADO",
@@ -34206,10 +34235,13 @@
         "descripcion":"TABLA PARA PICAR CON CUCHILLO",
         "ref":"DIO2403"
      },
-     "7022404":{
-        "descripcion":"DOMINO	DE MADERA",
-        "ref":"DIO2404"
-     },
+     
+      "7022404": {
+        "descripcion": "DOMINO\\tDE MADERA",
+        "ref": "DIO2404"
+      
+    },
+    
      "7022405":{
         "descripcion":"RELOJ DE PARED REDONDO",
         "ref":"DIO2405"
@@ -34310,10 +34342,13 @@
         "descripcion":"CAJA DE TE COLOR CAFÉ",
         "ref":"DIO2429"
      },
-     "7022430":{
-        "descripcion":"SET DE	LICORERA",
-        "ref":"DIO2430"
-     },
+     
+      "7022430": {
+        "descripcion": "SET DE\\tLICORERA",
+        "ref": "DIO2430"
+      
+    },
+    
      "7022431":{
         "descripcion":"ESPATULA PARA COCINA",
         "ref":"DIO2431"
@@ -34334,10 +34369,13 @@
         "descripcion":"LICORERA PEQUEÑA",
         "ref":"DIO2435"
      },
-     "7022436":{
-        "descripcion":"TABLERO MAGICO	EN BOLSA",
-        "ref":"DIO2436"
-     },
+     
+      "7022436": {
+        "descripcion": "TABLERO MAGICO\\tEN BOLSA",
+        "ref": "DIO2436"
+      },
+    
+    
      "7022437":{
         "descripcion":"LICORERA SURTIDA",
         "ref":"DIO2437"
@@ -34410,10 +34448,13 @@
         "descripcion":"CORTINA PARA BAÑO",
         "ref":"DIO2454"
      },
-     "7022455":{
-        "descripcion":"COSMETIQUERA	SURTIDA",
-        "ref":"DIO2455"
-     },
+     
+      "7022455": {
+        "descripcion": "COSMETIQUERA\\tSURTIDA",
+        "ref": "DIO2455"
+      
+    },
+    
      "7022456":{
         "descripcion":"ADORNO MARIPOSA PARA JARDIN",
         "ref":"DIO2456"
@@ -34458,9 +34499,13 @@
         "descripcion":"LICORERA FIG CAMARA",
         "ref":"DIO2466"
      },
-     "7022467":{
-        "descripcion":"PORTARETRATO	DECORADO",
-        "ref":"DIO2467"
+     
+      "7022467": {
+        "descripcion": "PORTARETRATO\\tDECORADO",
+        "ref": "DIO2467"
+      
+    
+    
      },
      "7022468":{
         "descripcion":"JOYERO DECORADO",
@@ -34585,14 +34630,20 @@
         "descripcion":"SET BALDE DIDACTICO 6 PCS",
         "ref":"DIO2497"
      },
-     "7022498":{
-        "descripcion":"SET BELLEZA",
-        "ref":"DIO2498"
-     },
-     "7022499":{
-        "descripcion":"TETERO	JUGUETE MUSICAL",
-        "ref":"DIO2499"
-     },
+     
+      "7022498": {
+        "descripcion": "SET BELLEZA",
+        "ref": "DIO2498"
+      
+    },
+    
+    
+      "7022499": {
+        "descripcion": "TETERO\\tJUGUETE MUSICAL",
+        "ref": "DIO2499"
+      },
+    
+    
      "7022500":{
         "descripcion":"VELA ARTIFICIAL 4 PCS",
         "ref":"DIO2500"
@@ -34673,14 +34724,17 @@
         "descripcion":"CANDELABRO FIGURA CASA",
         "ref":"DIO2519"
      },
-     "7022520":{
-        "descripcion":"ADORNO FIGURA	BICICLETA CON VELA",
-        "ref":"DIO2520"
-     },
-     "7022521":{
-        "descripcion":"PORTA LAPICERO	DECORADO",
-        "ref":"DIO2521"
-     },
+     
+      "7022520": {
+        "descripcion": "ADORNO FIGURA\\tBICICLETA CON VELA",
+        "ref": "DIO2520"
+      },
+      "7022521": {
+        "descripcion": "PORTA LAPICERO\\tDECORADO",
+        "ref": "DIO2521"
+      
+    },
+    
      "7022522":{
         "descripcion":"CAJA METALICA",
         "ref":"DIO2522"
@@ -34733,10 +34787,13 @@
         "descripcion":"SET DE BELLEZA",
         "ref":"DIO2534"
      },
-     "7022535":{
-        "descripcion":"SET DE BELLEZA	CON ZAPATILLAS",
-        "ref":"DIO2535"
-     },
+     
+      "7022535": {
+        "descripcion": "SET DE BELLEZA\\tCON ZAPATILLAS",
+        "ref": "DIO2535"
+      
+    },
+    
      "7022536":{
         "descripcion":"PONY LUZ Y SONIDO",
         "ref":"DIO2536"
@@ -34845,18 +34902,19 @@
         "descripcion":"FRUTERO DECORADO",
         "ref":"DIO2562"
      },
-     "7022563":{
-        "descripcion":"SET DE BELLEZA	ENCARTONADO",
-        "ref":"DIO2563"
-     },
-     "7022564":{
-        "descripcion":"PORTA LAPICERO	DECORADO",
-        "ref":"DIO2564"
-     },
-     "7022565":{
-        "descripcion":"ADORNO FIGURA	CANASTA BLANCA",
-        "ref":"DIO2565"
-     },
+     
+      "7022563": {
+        "descripcion": "SET DE BELLEZA EN CARTONADO",
+        "ref": "DIO2563"
+      },
+      "7022564": {
+        "descripcion": "PORTA LAPICERO DECORADO",
+        "ref": "DIO2564"
+      },
+      "7022565": {
+        "descripcion": "ADORNO FIGURA CANASTA BLANCA",
+        "ref": "DIO2565" 
+      },
      "7022566":{
         "descripcion":"ADORNO BICICLETA CON CANASTA",
         "ref":"DIO2566"
@@ -35165,9 +35223,12 @@
         "descripcion":"BURBUJERO FIGURA SOMBRILLA",
         "ref":"DIO2642"
      },
-     "7022643":{
-        "descripcion":"SET DE BLOQUES	FIGURA OSO PANDA",
-        "ref":"DIO2643"
+     
+      "7022643": {
+        "descripcion": "SET DE BLOQUES\\tFIGURA OSO PANDA",
+        "ref": "DIO2643"
+     
+    
      },
      "7022644":{
         "descripcion":"LANZA PELOTA ENCARTONADO",
@@ -35233,17 +35294,25 @@
         "descripcion":"PONY EN BOLSA",
         "ref":"DIO2659"
      },
-     "7022660":{
-        "descripcion":"LANZA PELOTAS	ENCARTONADO",
-        "ref":"DIO2660"
+     
+      "7022660": {
+        "descripcion": "LANZA PELOTAS\\tENCARTONADO",
+        "ref": "DIO2660"
+      
+    
+    
      },
      "7022661":{
         "descripcion":"TELEFONO INFANTIL EN BOLSA",
         "ref":"DIO2661"
      },
-     "7022662":{
-        "descripcion":"SET DE BLOQUES	EN MALETA",
-        "ref":"DIO2662"
+     
+      "7022662": {
+        "descripcion": "SET DE BLOQUES\\tEN MALETA",
+        "ref": "DIO2662"
+      
+    
+    
      },
      "7022663":{
         "descripcion":"TARRO 680 ML",
@@ -35753,38 +35822,41 @@
         "descripcion":"AVION LUZ Y SONIDO",
         "ref":"DIO2789"
      },
-     "7022790":{
-        "descripcion":"SET DE 	COCINA INFANTIL",
-        "ref":"DIO2790"
-     },
-     "7022791":{
-        "descripcion":"SET DE COCINA INFANTIL EN CANASTA",
-        "ref":"DIO2791"
-     },
-     "7022792":{
-        "descripcion":"SET DE COCINA INFANTIL EN BOLSO",
-        "ref":"DIO2792"
-     },
-     "7022793":{
-        "descripcion":"SET DOCTOR INFANTIL",
-        "ref":"DIO2793"
-     },
-     "7022794":{
-        "descripcion":"COCHE BEBE INFANTIL",
-        "ref":"DIO2794"
-     },
-     "7022795":{
-        "descripcion":"ANIMAL INFLABLE	FIGURA CABALLO",
-        "ref":"DIO2795"
-     },
-     "7022796":{
-        "descripcion":"ANIMAL INFLABLE	CON SONIDO",
-        "ref":"DIO2796"
-     },
-     "7022797":{
-        "descripcion":"ANIMAL INFLABLE	CON SONIDO",
-        "ref":"DIO2797"
-     },
+     
+      "7022790": {
+        "descripcion": "SET DE COCINA INFANTIL",
+        "ref": "DIO2790"
+      },
+      "7022791": {
+        "descripcion": "SET DE COCINA INFANTIL EN CANASTA",
+        "ref": "DIO2791"
+      },
+      "7022792": {
+        "descripcion": "SET DE COCINA INFANTIL EN BOLSO",
+        "ref": "DIO2792"
+      },
+      "7022793": {
+        "descripcion": "SET DOCTOR INFANTIL",
+        "ref": "DIO2793"
+      },
+      "7022794": {
+        "descripcion": "COCHE BEBE INFANTIL",
+        "ref": "DIO2794"
+      },
+      "7022795": {
+        "descripcion": "ANIMAL INFLABLE FIGURA CABALLO",
+        "ref": "DIO2795"
+      },
+      "7022796": {
+        "descripcion": "ANIMAL INFLABLE CON SONIDO",
+        "ref": "DIO2796"
+      },
+      "7022797": {
+        "descripcion": "ANIMAL INFLABLE CON SONIDO",
+        "ref": "DIO2797"
+      
+    },
+    
      "7022798":{
         "descripcion":"KIT DE BOXEO",
         "ref":"DIO2798"
@@ -37081,10 +37153,13 @@
         "descripcion":"MUÑECA HAPPY SWEET X 3",
         "ref":"DIO3121"
      },
-     "7023122":{
-        "descripcion":"MUÑECA	 LITTLE CHARMERS",
-        "ref":"DIO3122"
-     },
+     
+      "7023122": {
+        "descripcion": "MUÑECA\\tLITTLE CHARMERS",
+        "ref": "DIO3122"
+      },
+    
+    
      "7023123":{
         "descripcion":"MUÑECA	BEAUTY VESTIDOS",
         "ref":"DIO3123"
@@ -112057,7 +112132,7 @@
      },
      "7130441":{
         "descripcion":"N/D",
-       ,
+       
        "ref": "STI0441"
      },
      "7070442": {
@@ -112071,7 +112146,7 @@
      },
      "7130444":{
         "descripcion":"N/D",
-       ,
+       
        "ref": "STI0444"
      },
      "7130445": {
@@ -112080,7 +112155,7 @@
      },
      "7130446":{
         "descripcion":"N/D",
-       ,
+       
        "ref": "STI0446"
      },
      "7130447": {
@@ -114917,9 +114992,13 @@
         "descripcion":"LATA GR PARA ALMACENAMIENTO MARILYN NEW",
         "ref":"STI1149"
      },
-     "7071150":{
-        "descripcion":"LATA PQ PARA ALMACENAMIENTO	MICKEY PATCHWORK",
-        "ref":"STI1150"
+     
+      "7071150": {
+        "descripcion": "LATA PQ PARA ALMACENAMIENTO\\tMICKEY PATCHWORK",
+        "ref": "STI1150"
+      
+    
+    
      },
      "7071151":{
         "descripcion":"LATA GR PARA ALMACENAMIENTO VAN COLORES",
@@ -115058,7 +115137,7 @@
         "ref":"STI1184"
      },
      "7071185":{
-        "descripcion":"CHUPO CORTE "Y" SILICONA B.A. OPTION",
+        "descripcion":"CHUPO CORTE Y SILICONA B.A. OPTION",
         "ref":"STI1185"
      },
      "7071186":{
@@ -116778,8 +116857,8 @@
         "ref":"STI1614"
      },
      "7131615":{
-        "descripcion":"
-       ,
+        "descripcion":"N/D",
+       
        "ref": "STI1615"
      },
      "7071616": {
@@ -116788,52 +116867,52 @@
        "ref": "STI1616"
      },
      "7131617": {
-       "descripcion": ",
+       "descripcion": "N/D",
         "ref":"STI1617"
      },
      "7131618":{
-        "descripcion":"
-       ,
+        "descripcion":"N/D",
+       
        "ref": "STI1618"
      },
      "7131619": {
-       "descripcion": ",
+       "descripcion": "N/D",
         "ref":"STI1619"
      },
      "7131620":{
-        "descripcion":"
-       ,
+        "descripcion":"N/D",
+       
        "ref": "STI1620"
      },
      "7131621": {
-       "descripcion": ",
+       "descripcion": "N/D",
         "ref":"STI1621"
      },
      "7131622":{
-        "descripcion":"
-       ,
+        "descripcion":"N/D",
+       
        "ref": "STI1622"
      },
      "7131623": {
-       "descripcion": ",
+       "descripcion": "N/D",
         "ref":"STI1623"
      },
      "7131624":{
-        "descripcion":"
-       ,
+        "descripcion":"N/D",
+       
        "ref": "STI1624"
      },
      "7131625": {
-       "descripcion": ",
+       "descripcion": "N/D",
         "ref":"STI1625"
      },
      "7131626":{
-        "descripcion":"
-       ,
+        "descripcion":"N/D",
+       
        "ref": "STI1626"
      },
      "7131627": {
-       "descripcion": ",
+       "descripcion": "N/D",
         "ref":"STI1627"
      },
      "7071628":{
@@ -117565,8 +117644,7 @@
         "ref":"STI1809"
      },
      "7071810":{
-        "descripcion":"KIDS LIGHT SCOOTER
-     TOY STORY 4",
+        "descripcion":"KIDS LIGHT SCOOTER TOY STORY 4",
         "ref":"STI1810"
      },
      "7071811":{
