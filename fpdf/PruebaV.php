@@ -11,47 +11,47 @@ class PDF extends FPDF
         $this->SetFont('Arial', 'B', 19);
         $this->Cell(25);
         $this->SetTextColor(0, 0, 0);
-        $this->Cell(140, 25, utf8_decode('FORMATO: EMPAQUE DE TIENDA 2024'), 1, 1, 'C', 0);
+        $this->Cell(140, 25,  ('FORMATO: EMPAQUE DE TIENDA 2024'), 1, 1, 'C', 0);
         $this->Ln(3);
 
         $this->SetFont('Arial', 'B', 10);
         $this->SetTextColor(0, 0, 0);
 
         // Subtítulo
-        $this->Cell(0, 10, utf8_decode('Por Favor diligencie todos los datos con las diferentes referencias que desea solicitar y observaciones que tenga al respecto.'), 0, 1, 'C');
+        $this->Cell(0, 10,  ('Por Favor diligencie todos los datos con las diferentes referencias que desea solicitar y observaciones que tenga al respecto.'), 0, 1, 'C');
         $this->Ln(5);
 
         // Información general
         $this->SetFont('Arial', '', 10);
 
-        $this->Cell(40, 10, utf8_decode('FECHA INICIAL EMPAQUE:'), 1, 0);
+        $this->Cell(40, 10,  ('FECHA INICIAL EMPAQUE:'), 1, 0);
         $this->Cell(40, 10, '12/07/24', 1, 0);
-        $this->Cell(30, 10, utf8_decode('HORA INICIAL:'), 1, 0);
+        $this->Cell(30, 10,  ('HORA INICIAL:'), 1, 0);
         $this->Cell(30, 10, '2:50 PM', 1, 1);
 
-        $this->Cell(40, 10, utf8_decode('FECHA FINAL EMPAQUE:'), 1, 0);
+        $this->Cell(40, 10,  ('FECHA FINAL EMPAQUE:'), 1, 0);
         $this->Cell(40, 10, '15/07/24', 1, 0);
-        $this->Cell(30, 10, utf8_decode('HORA FINAL:'), 1, 0);
+        $this->Cell(30, 10,  ('HORA FINAL:'), 1, 0);
         $this->Cell(30, 10, '5:00 PM', 1, 1);
 
-        $this->Cell(40, 10, utf8_decode('RESPONSABLE EMPAQUE:'), 1, 0);
+        $this->Cell(40, 10,  ('RESPONSABLE EMPAQUE:'), 1, 0);
         $this->Cell(70, 10, '', 1, 0);
-        $this->Cell(40, 10, utf8_decode('REVISADO POR:'), 1, 0);
+        $this->Cell(40, 10,  ('REVISADO POR:'), 1, 0);
         $this->Cell(40, 10, '', 1, 1);
 
-        $this->Cell(40, 10, utf8_decode('NOMBRE DEL CLIENTE:'), 1, 0);
+        $this->Cell(40, 10,  ('NOMBRE DEL CLIENTE:'), 1, 0);
         $this->Cell(70, 10, 'Boy Toys La Tebaida', 1, 0);
-        $this->Cell(40, 10, utf8_decode('NIT/CC:'), 1, 0);
+        $this->Cell(40, 10,  ('NIT/CC:'), 1, 0);
         $this->Cell(40, 10, '900637945-1', 1, 1);
 
-        $this->Cell(40, 10, utf8_decode('DIRECCIÓN:'), 1, 0);
+        $this->Cell(40, 10,  ('DIRECCIÓN:'), 1, 0);
         $this->Cell(70, 10, 'Km 10 vía la Tebaida', 1, 0);
-        $this->Cell(40, 10, utf8_decode('CIUDAD:'), 1, 0);
+        $this->Cell(40, 10,  ('CIUDAD:'), 1, 0);
         $this->Cell(40, 10, 'Armenia', 1, 1);
 
-        $this->Cell(40, 10, utf8_decode('TELÉFONO:'), 1, 0);
+        $this->Cell(40, 10,  ('TELÉFONO:'), 1, 0);
         $this->Cell(70, 10, '322 2703045', 1, 0);
-        $this->Cell(40, 10, utf8_decode('# PEDIDO:'), 1, 0);
+        $this->Cell(40, 10,  ('# PEDIDO:'), 1, 0);
         $this->Cell(40, 10, 'TAT-231', 1, 1);
 
         $this->Ln(10);
@@ -62,10 +62,10 @@ class PDF extends FPDF
         $this->SetTextColor(255, 255, 255); // color de texto
         $this->SetDrawColor(163, 163, 163); // color de borde
 
-        $this->Cell(50, 10, utf8_decode('REFERENCIA'), 1, 0, 'C', 1);
-        $this->Cell(80, 10, utf8_decode('DESC. ITEM'), 1, 0, 'C', 1);
-        $this->Cell(30, 10, utf8_decode('CANTIDAD'), 1, 0, 'C', 1);
-        $this->Cell(30, 10, utf8_decode('NUMERO DE CAJA'), 1, 1, 'C', 1);
+        $this->Cell(50, 10,  ('REFERENCIA'), 1, 0, 'C', 1);
+        $this->Cell(80, 10,  ('DESC. ITEM'), 1, 0, 'C', 1);
+        $this->Cell(30, 10,  ('CANTIDAD'), 1, 0, 'C', 1);
+        $this->Cell(30, 10,  ('NUMERO DE CAJA'), 1, 1, 'C', 1);
     }
 
     // Pie de página
@@ -73,9 +73,9 @@ class PDF extends FPDF
     {
         $this->SetY(-15);
         $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, utf8_decode('Página ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
+        $this->Cell(0, 10,  ('Página ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
         $hoy = date('d/m/Y');
-        $this->Cell(0, 10, utf8_decode($hoy), 0, 0, 'R');
+        $this->Cell(0, 10,  ($hoy), 0, 0, 'R');
     }
 }
 
@@ -96,10 +96,10 @@ $referencias = [
 ];
 
 foreach ($referencias as $ref) {
-    $pdf->Cell(50, 10, utf8_decode($ref[0]), 1, 0, 'C', 0);
-    $pdf->Cell(80, 10, utf8_decode($ref[1]), 1, 0, 'C', 0);
-    $pdf->Cell(30, 10, utf8_decode($ref[2]), 1, 0, 'C', 0);
-    $pdf->Cell(30, 10, utf8_decode($ref[3]), 1, 1, 'C', 0);
+    $pdf->Cell(50, 10,  ($ref[0]), 1, 0, 'C', 0);
+    $pdf->Cell(80, 10,  ($ref[1]), 1, 0, 'C', 0);
+    $pdf->Cell(30, 10,  ($ref[2]), 1, 0, 'C', 0);
+    $pdf->Cell(30, 10,  ($ref[3]), 1, 1, 'C', 0);
 }
 
 $pdf->Output('Prueba.pdf', 'I'); // nombreDescarga, Visor (I->visualizar - D->descargar)
