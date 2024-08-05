@@ -12,6 +12,16 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
+//Eliminar  los datos mas antiguos que la fecha de inicio en este caso 10 dias hacia atras
+
+$daysToKeep = 10;  // dias acontar para borrar los datos antiguos
+$sqlDelete = "DELETE FROM tiendaempaques WHERE fecha_registro < NOW() - INTERVAL ? DAY";
+$stmtDelete = $conn->prepare($sqlDelete);
+$stmtDelete->bind_param("i", $daysToKeep);
+$stmtDelete->execute();
+$stmtDelete->close();
+
+
 // Obtener parámetros de filtro
 $box = isset($_GET['box']) ? $_GET['box'] : '';
 $barcode = isset($_GET['barcode']) ? $_GET['barcode'] : '';
