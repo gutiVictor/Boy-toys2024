@@ -4,84 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="LOGO-BOY-TOYS.png" type="image/png">
+    <link rel="stylesheet" href="stylevalidacion_cantidad.css">
     <title>Validación de Cantidad</title>
     <style>
-        /* Estilos para la tabla */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        .separator {
-            background-color: #dfd9d9;
-            height: 10px;
-        }
+       
     </style>
 </head>
 <body>
-    <h1>Validación de Cantidad</h1>
-    <!-- Botón para regresar a ingreso_datos.html -->
-    <a href="ingreso_datos.html" >Regresar</a>
-    <br><br>
+    <div class="container">
+        <h1>Validación de Cantidad</h1>
+        <!-- Botón para regresar a ingreso_datos.html -->
+        <a href="ingreso_datos.html" >Regresar</a>
+        <br><br>
 
-<div class="text-right">
-    <a href="/fpdf/PruebaV.php" target="_blank" class="btn btn-success"><i class="fa-solid fa-file-pdf"></i>Exportar a PDF</a>
-</div>
+        <div class="text-right">
+            <a href="/fpdf/PruebaV.php" target="_blank" class="btn-success"><i class="fa-solid fa-file-pdf"></i> Exportar a PDF</a>
+        </div>
 
+        <br><br>
+        <!-- Formulario de filtros -->
+        <div class="filter-container">
+            <!-- Filtro de código de barra -->
+            <label for="filterBarcode">Código de Barra:</label>
+            <input type="text" id="filterBarcode" name="filterBarcode">
 
+            <!-- Filtro de referencia -->
+            <label for="filterRef">Ref:</label>
+            <input type="text" id="filterRef" name="filterRef">
 
-    <!-- boton para exportar a pdf
-    <button id="exportPDF">Exportar a PDF</button>  --> 
+            <!-- Filtro de número de caja -->
+            <label for="filterBox">#Caja:</label>
+            <input type="text" id="filterBox" name="filterBox">
 
-    <br><br>
-    <!-- Formulario de filtros -->
-    <div>
-        <!-- Filtro de código de barra -->
-        <label for="filterBarcode">Código de Barra:</label>
-        <input type="text" id="filterBarcode" name="filterBarcode">
+            <!-- Filtro de fecha de inicio -->
+            <label for="fecha_inicio">Fecha Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio">
+
+            <!-- Filtro de fecha de fin -->
+            <label for="fecha_fin">Fecha Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin">
+
+            <!-- Botón para aplicar los filtros -->
+            <button id="applyFilters">Aplicar Filtros</button>
+        </div>
+        <br><br>
         
-        <!-- Filtro de referencia -->
-        <label for="filterRef">Ref:</label>
-        <input type="text" id="filterRef" name="filterRef">
-
-        <!-- Filtro de número de caja -->
-        <label for="filterBox">#Caja:</label>
-        <input type="text" id="filterBox" name="filterBox">
-
-        <!-- Filtro de fecha de inicio -->
-        <label for="fecha_inicio">Fecha Inicio:</label>
-        <input type="date" id="fecha_inicio" name="fecha_inicio">
-
-        <!-- Filtro de fecha de fin -->
-        <label for="fecha_fin">Fecha Fin:</label>
-        <input type="date" id="fecha_fin" name="fecha_fin">
-
-        <!-- Botón para aplicar los filtros -->
-        <button id="applyFilters">Aplicar Filtros</button>
+        <!-- Tabla para mostrar los datos consolidados -->
+        <table id="consolidatedTable">
+            <thead>
+                <tr>
+                    <th>Código de Barra</th>
+                    <th>Ref</th>
+                    <th>Descripción del Ítem</th>
+                    <th>Cantidad</th>
+                    <th>#Caja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertarán las filas con los datos -->
+            </tbody>
+        </table>
     </div>
-    <br><br>
-    
-    <!-- Tabla para mostrar los datos consolidados -->
-    <table id="consolidatedTable">
-        <thead>
-            <tr>
-                <th>Código de Barra</th>
-                <th>Ref</th>
-                <th>Descripción del Ítem</th>
-                <th>Cantidad</th>
-                <th>#Caja</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí se insertarán las filas con los datos -->
-        </tbody>
-    </table>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
