@@ -18,55 +18,38 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener("keydown", function(event) {
-  // Verificar si el foco está en el campo de codigo y si se presionó Enter
-  if (event.target.id === "codigo" && event.key === "Enter") {
-    // Evitar que se envíe el formulario automáticamente
-    event.preventDefault();
+// Variable para manejar el temporizador
+let typingTimer;
+const doneTypingInterval = 500; // Tiempo en milisegundos
 
-    // Obtener el valor del código de barras leído
-    var codigoBarras = document.getElementById("codigo").value;
+// Manejar el evento de entrada en el campo de código
+document.getElementById("codigo").addEventListener("input", function() {
+  clearTimeout(typingTimer);
+  const codigoBarras = this.value;
 
-    // Insertar el código de barras en el campo de codigo
-    document.getElementById("codigo").value = codigoBarras;
-
-    // Buscar la descripción del producto y actualizar el campo correspondiente
-    if (productos[codigoBarras]) {
-      document.getElementById("descripcion").value = productos[codigoBarras].descripcion;
-      document.getElementById("ref").value = productos[codigoBarras].ref; // Asignar Ref
-    } else {
-      document.getElementById("descripcion").value = "Descripción no encontrada";
-      document.getElementById("ref").value = ""; // Limpiar Ref si no se encuentra el producto
-    }
-
-    // Mover el foco al campo de cantidad
-    document.getElementById("cantidad").focus();
+  // Esperar hasta que el código de barras tenga 7 dígitos
+  if (codigoBarras.length >= 7) {
+    typingTimer = setTimeout(() => {
+      if (productos[codigoBarras]) {
+        document.getElementById("descripcion").value = productos[codigoBarras].descripcion;
+        document.getElementById("ref").value = productos[codigoBarras].ref; // Asignar Ref
+      } else {
+        document.getElementById("descripcion").value = "Descripción no encontrada";
+        document.getElementById("ref").value = ""; // Limpiar Ref si no se encuentra el producto
+      }
+      document.getElementById("cantidad").focus(); // Mover el foco al campo de cantidad
+    }, doneTypingInterval);
   }
+});
 
-  // Verificar si el foco está en el campo de cantidad y si se presionó Enter
-  if (event.target.id === "cantidad" && event.key === "Enter") {
-    event.preventDefault();
-
-    // Mover el foco al campo de número de caja
-    document.getElementById("num-caja").focus();
-  }
-
-  // Verificar si el foco está en el campo de número de caja y si se presionó Enter
-  if (event.target.id === "num-caja" && event.key === "Enter") {
-    event.preventDefault();
-
-    // Validar el campo de número de caja antes de enviar el formulario
-    if (!validarNumeroCaja()) {
-      event.preventDefault();
-    } else {
-      document.getElementById("mi-formulario").submit();
-    }
-  }
+// Manejar el evento de entrada en el campo de cantidad
+document.getElementById("cantidad").addEventListener("input", function() {
+  document.getElementById("numero_caja").focus(); // Mover el foco al campo de número de caja
 });
 
 // Función para validar el campo de número de caja
 function validarNumeroCaja() {
-    const numeroCaja = document.getElementById("num-caja").value;
+    const numeroCaja = document.getElementById("numero_caja").value;
     const mensajeError = document.getElementById("mensaje-error");
 
     if (!numeroCaja || numeroCaja <= 0) {
@@ -83,7 +66,7 @@ document.getElementById("mi-formulario").addEventListener("submit", function(eve
     if (!validarNumeroCaja()) {
         event.preventDefault();
     } else {
-        // Establecer un breve retraso antes de enfocar el campo de codigo para asegurarse de que el formulario haya terminado de enviarse
+        // Establecer un breve retraso antes de enfocar el campo de código para asegurarse de que el formulario haya terminado de enviarse
         setTimeout(function() {
             document.getElementById("codigo").focus();
         }, 500);
