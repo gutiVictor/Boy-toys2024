@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => {
       console.error('Error al cargar productos:', error);
     });
+
+  // Asegurarse de que el campo de código de barras esté enfocado cuando se carga la página
+  document.getElementById("codigo").focus();
 });
 
 // Variable para manejar el temporizador
@@ -66,9 +69,12 @@ document.getElementById("mi-formulario").addEventListener("submit", function(eve
     if (!validarNumeroCaja()) {
         event.preventDefault();
     } else {
-        // Establecer un breve retraso antes de enfocar el campo de código para asegurarse de que el formulario haya terminado de enviarse
+        // Opcional: Mostrar un mensaje de éxito
+        alert("Datos enviados correctamente!");
+
+        // Opcional: Enfocar el campo de código de barras después de un retraso
         setTimeout(function() {
             document.getElementById("codigo").focus();
-        }, 500);
+        }, 500); // Retraso opcional para asegurar que el formulario se haya enviado
     }
 });
