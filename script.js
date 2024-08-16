@@ -47,7 +47,7 @@ document.getElementById("codigo").addEventListener("input", function() {
 
 // Manejar el evento de entrada en el campo de cantidad
 document.getElementById("cantidad").addEventListener("input", function() {
-  document.getElementById("numero_caja").focus(); // Mover el foco al campo de número de caja
+  // No mover el foco automáticamente al campo de número de caja
 });
 
 // Función para validar el campo de número de caja
