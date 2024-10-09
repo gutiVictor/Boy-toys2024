@@ -5,6 +5,7 @@ body {
     background-color: #121212; /* Fondo oscuro */
     margin: 0;
     padding: 0;
+    background-image: url("Fondo.png");
 }
 
 /* Estilo para el contenedor principal */

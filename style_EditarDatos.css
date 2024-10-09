@@ -4,6 +4,7 @@ body {
     color: #BB86FC; /* Color de texto claro */
     margin: 0;
     padding: 0;
+    background-image: url("Fondo.png");
 }
 
 .container {
