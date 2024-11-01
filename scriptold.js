@@ -45,31 +45,6 @@ document.getElementById("codigo").addEventListener("input", function() {
   }
 });
 
-// Manejar el evento de entrada en el campo de referencia
-document.getElementById("ref").addEventListener("input", function() {
-  clearTimeout(typingTimer);
-  const ref = this.value.toUpperCase();//convertir el valor a mayusculas
-
-  // Espera a que tenga 7 digitos
-  if (ref.length >= 7) {
-  // Esperar hasta que el usuario termine de escribir
-  typingTimer = setTimeout(() => {
-    for (let codigo in productos) {
-      if (productos[codigo].ref === ref) {
-        document.getElementById("codigo").value = codigo; // Asignar código de barras
-        document.getElementById("descripcion").value = productos[codigo].descripcion; // Asignar descripción
-        document.getElementById("cantidad").focus(); // Mover el foco al campo de cantidad
-        return; // Salir del bucle si se encuentra la referencia
-      }
-    }
-    // Si no se encuentra la referencia, limpiar los campos
-    document.getElementById("codigo").value = "";
-    document.getElementById("descripcion").value = "Descripción no encontrada";
-    document.getElementById("cantidad").focus(); // Mover el foco al campo de cantidad
-  }, doneTypingInterval);
-}
-});
-
 // Manejar el evento de entrada en el campo de cantidad
 document.getElementById("cantidad").addEventListener("input", function() {
   // No mover el foco automáticamente al campo de número de caja
@@ -98,9 +73,6 @@ document.getElementById("mi-formulario").addEventListener("keydown", function(ev
 
 // Evento de envío del formulario
 document.getElementById("mi-formulario").addEventListener("submit", function(event) {
-    // Habilitar temporalmente el campo de descripción para que pueda ser enviado
-    document.getElementById("descripcion").disabled = false;
-
     if (!validarNumeroCaja()) {
         event.preventDefault();
     } else {
@@ -112,7 +84,4 @@ document.getElementById("mi-formulario").addEventListener("submit", function(eve
             document.getElementById("codigo").focus();
         }, 500); // Retraso opcional para asegurar que el formulario se haya enviado
     }
-
-    // Deshabilitar nuevamente el campo de descripción después del envío
-    document.getElementById("descripcion").disabled = true;
 });

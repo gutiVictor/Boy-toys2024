@@ -9,10 +9,7 @@
   </head>
   <body>
     <div class="main">
-      <div class="input-group" style=" background-image: url('Fondo.png');" ></div>
-
-
-
+      <div class="input-group" style="background-image: url('Fondo.png');"></div>
 
       <div class="header">
         <img src="LOGO-BOY-TOYS.png" alt="Boytoys" />
@@ -22,16 +19,16 @@
       <form id="mi-formulario" action="conecction.php" method="post">
         <div class="form-group">
           <label for="codigo">Código/Barras:</label>
-          <input type="text" id="codigo" name="codigo" required />
+          <input type="text" id="codigo" name="codigo" />
         </div>
         <!-- Nuevo campo Ref -->
         <div class="form-group">
           <label for="ref">Ref:</label>
-          <input type="text" id="ref" name="ref" required />
+          <input type="text" id="ref" name="ref" />
         </div>
         <div class="form-group">
           <label for="descripcion">Descripción del ítem:</label>
-          <input type="text" id="descripcion" name="descripcion" required />
+          <input type="text" id="descripcion" name="descripcion" required disabled />
         </div>
         <div class="form-group">
           <label for="cantidad">Cantidad:</label>
@@ -40,7 +37,6 @@
             id="cantidad"
             name="cantidad"
             min="1"
-            value=""
             required
           />
         </div>
